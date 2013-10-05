@@ -4,6 +4,7 @@ import com.censoredsoftware.helper.WrappedCommand;
 import com.censoredsoftware.util.Messages;
 import com.minegusta.mauswashere.command.*;
 import com.minegusta.mauswashere.data.ThreadManager;
+import com.minegusta.mauswashere.listener.BlockListener;
 import com.minegusta.mauswashere.listener.EntityListener;
 import com.minegusta.mauswashere.listener.PlayerListener;
 import com.minegusta.mauswashere.listener.ProjectileListener;
@@ -54,7 +55,7 @@ public class MausWasHere {
 
     // Listeners
     public enum ListedListener {
-        ENTITY(new EntityListener()), PLAYER(new PlayerListener()), PROJECTILE(new ProjectileListener());
+        BLOCK(new BlockListener()), ENTITY(new EntityListener()), PLAYER(new PlayerListener()), PROJECTILE(new ProjectileListener());
 
         private Listener listener;
 
@@ -69,7 +70,7 @@ public class MausWasHere {
 
     // Commands
     public enum ListedCommand {
-        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), ROLL(new RollCommand());
+        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), RENAME(new RenameCommand()), ROLL(new RollCommand());
 
         private WrappedCommand command;
 

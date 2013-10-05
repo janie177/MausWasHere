@@ -16,15 +16,7 @@ public class PlayerListener implements Listener {
         MPlayer mPlayer = MPlayer.Util.getPlayer(player);
 
         // First join
-        if (mPlayer == null) {
-            mPlayer = MPlayer.Util.create(player);
-        } else {
-            // Set Health
-            player.setHealth(mPlayer.getLastHealth());
-            player.setMaxHealth(40);
-            player.setHealthScaled(true);
-            player.setHealthScale(6);
-        }
+        if (mPlayer == null) mPlayer = MPlayer.Util.create(player);
 
         // Set their last login-time
         Long now = System.currentTimeMillis();
