@@ -117,11 +117,6 @@ public class MPlayer implements ConfigurationSerializable {
             playerSave.setLastLoginTime(player.getLastPlayed());
             save(playerSave);
 
-            player.setMaxHealth(40);
-            player.setHealth(40);
-            player.setHealthScaled(true);
-            player.setHealthScale(6);
-
             return playerSave;
         }
 
