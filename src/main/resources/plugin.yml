@@ -1,0 +1,4 @@
+name: MausWasHere
+main: com.minegusta.mauswashere.MausPlugin
+version: ${project.version}
+authors: [_Alex, HmmmQuestionMark, janie177]
