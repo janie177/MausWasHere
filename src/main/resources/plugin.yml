@@ -132,3 +132,13 @@ commands:
       description:
       usage: Kill yourself.
       permission-message: No.
+   desc:
+      description: Changes an items description.
+      usage: /Desc <Description>
+      permission: donatorstuff.desc
+      permission-message: You don't have permission to use this. Now die in a corner.
+   rename:
+      description: Rename the item in your hand.
+      usage: /Rename <New name>
+      permission: donatorstuff.rename
+      permission-message: You don't have permission to use this. Now die in a corner.

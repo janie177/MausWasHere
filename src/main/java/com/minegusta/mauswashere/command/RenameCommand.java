@@ -23,7 +23,7 @@ public class RenameCommand extends WrappedCommand {
 
     @Override
     public Set<String> getCommands() {
-        return Sets.newHashSet("rename");
+        return Sets.newHashSet("rename", "desc");
     }
 
     @Override
