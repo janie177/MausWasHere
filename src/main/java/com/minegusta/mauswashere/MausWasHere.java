@@ -4,7 +4,6 @@ import com.censoredsoftware.helper.WrappedCommand;
 import com.censoredsoftware.util.Messages;
 import com.minegusta.mauswashere.command.*;
 import com.minegusta.mauswashere.data.ThreadManager;
-import com.minegusta.mauswashere.listener.ChatListener;
 import com.minegusta.mauswashere.listener.EntityListener;
 import com.minegusta.mauswashere.listener.PlayerListener;
 import com.minegusta.mauswashere.listener.ProjectileListener;
@@ -55,7 +54,7 @@ public class MausWasHere {
 
     // Listeners
     public enum ListedListener {
-        CHAT(new ChatListener()), ENTITY(new EntityListener()), PLAYER(new PlayerListener()), PROJECTILE(new ProjectileListener());
+        ENTITY(new EntityListener()), PLAYER(new PlayerListener()), PROJECTILE(new ProjectileListener());
 
         private Listener listener;
 
