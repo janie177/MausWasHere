@@ -17,7 +17,6 @@ import java.util.*;
 public class MPlayer implements ConfigurationSerializable {
     private String player;
     private long lastLoginTime, lastLogoutTime;
-    private double lastHealth;
     private Set<String> deaths;
 
     public MPlayer() {
@@ -27,9 +26,6 @@ public class MPlayer implements ConfigurationSerializable {
     public MPlayer(String player, ConfigurationSection conf) {
         this.player = player;
         lastLoginTime = conf.getLong("lastLoginTime");
-        if (conf.isDouble("lastHealth")) lastHealth = conf.getDouble("lastHealth");
-        if (conf.isLong("lastLogoutTime")) lastLogoutTime = conf.getLong("lastLogoutTime");
-        else lastLogoutTime = 0;
         deaths = Sets.newHashSet(conf.getStringList("deaths"));
     }
 
@@ -38,7 +34,6 @@ public class MPlayer implements ConfigurationSerializable {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("lastLoginTime", lastLoginTime);
         map.put("lastLogoutTime", lastLogoutTime);
-        map.put("lastHealth", lastHealth);
         map.put("deaths", Lists.newArrayList(deaths));
         return map;
     }
@@ -63,15 +58,6 @@ public class MPlayer implements ConfigurationSerializable {
     public void setLastLogoutTime(long time) {
         this.lastLogoutTime = time;
         Util.save(this);
-    }
-
-    public void setLastHealth(double health) {
-        this.lastHealth = health;
-        Util.save(this);
-    }
-
-    public double getLastHealth() {
-        return this.lastHealth;
     }
 
     public String getPlayerName() {

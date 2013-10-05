@@ -28,6 +28,5 @@ public class PlayerListener implements Listener {
         // Set their last logout-time
         Long now = System.currentTimeMillis();
         MPlayer.Util.getPlayer(event.getPlayer()).setLastLogoutTime(now);
-        MPlayer.Util.getPlayer(event.getPlayer()).setLastHealth(event.getPlayer().getHealth());
     }
 }
