@@ -1,20 +1,16 @@
 package com.minegusta.mauswashere;
 
-import com.censoredsoftware.util.Configs;
+import com.censoredsoftware.helper.WrappedCommand;
 import com.censoredsoftware.util.Messages;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.minegusta.mauswashere.command.*;
 import com.minegusta.mauswashere.data.ThreadManager;
 import com.minegusta.mauswashere.listener.ChatListener;
+import com.minegusta.mauswashere.listener.EntityListener;
 import com.minegusta.mauswashere.listener.PlayerListener;
-import com.minegusta.mauswashere.listener.ZoneListener;
+import com.minegusta.mauswashere.listener.ProjectileListener;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
-
-import java.util.Set;
 
 public class MausWasHere {
     // Constants
@@ -22,9 +18,6 @@ public class MausWasHere {
 
     // Public Static Access
     public static final MausPlugin PLUGIN;
-
-    // Disabled Stuff
-    public static ImmutableSet<String> DISABLED_WORLDS;
 
     // Load what is possible to load right away.
     static {
@@ -37,31 +30,12 @@ public class MausWasHere {
         // Start the data
         SAVE_PATH = PLUGIN.getDataFolder() + "/data/"; // Don't change this.
 
-        // Check if there are no enabled worlds
-        if (!loadWorlds()) {
-            Messages.severe("MausWasHere was unable to load any worlds.");
-            Messages.severe("Please enable at least 1 world.");
-            PLUGIN.getServer().getPluginManager().disablePlugin(PLUGIN);
-        }
-
         // Load listeners
         loadListeners();
+        loadCommands();
 
         // Start threads
         ThreadManager.startThreads();
-    }
-
-    private static boolean loadWorlds() {
-        Set<String> disabledWorlds = Sets.newHashSet();
-        for (String world : Collections2.filter(Configs.getSettingArrayListString("restrictions.disabled_worlds"), new Predicate<String>() {
-            @Override
-            public boolean apply(String world) {
-                return PLUGIN.getServer().getWorld(world) != null;
-            }
-        }))
-            if (PLUGIN.getServer().getWorld(world) != null) disabledWorlds.add(world);
-        DISABLED_WORLDS = ImmutableSet.copyOf(disabledWorlds);
-        return PLUGIN.getServer().getWorlds().size() != DISABLED_WORLDS.size();
     }
 
     private static void loadListeners() {
@@ -70,14 +44,18 @@ public class MausWasHere {
         // Engine
         for (ListedListener listener : ListedListener.values())
             register.registerEvents(listener.getListener(), PLUGIN);
+    }
 
-        // Disabled worlds
-        if (!DISABLED_WORLDS.isEmpty()) register.registerEvents(new ZoneListener(), PLUGIN);
+    private static void loadCommands() {
+        int count = 0;
+        for (ListedCommand command : ListedCommand.values())
+            count += command.getCommand().getCommands().size();
+        Messages.info(count + " commands loaded.");
     }
 
     // Listeners
     public enum ListedListener {
-        CHAT(new ChatListener()), PLAYER(new PlayerListener());
+        CHAT(new ChatListener()), ENTITY(new EntityListener()), PLAYER(new PlayerListener()), PROJECTILE(new ProjectileListener());
 
         private Listener listener;
 
@@ -87,6 +65,21 @@ public class MausWasHere {
 
         public Listener getListener() {
             return listener;
+        }
+    }
+
+    // Commands
+    public enum ListedCommand {
+        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), ROLL(new RollCommand());
+
+        private WrappedCommand command;
+
+        private ListedCommand(WrappedCommand command) {
+            this.command = command;
+        }
+
+        public WrappedCommand getCommand() {
+            return command;
         }
     }
 }

@@ -2,3 +2,133 @@ name: MausWasHere
 main: com.minegusta.mauswashere.MausPlugin
 version: ${project.version}
 authors: [_Alex, HmmmQuestionMark, janie177]
+commands:
+   explode:
+      description: Make someone go boom.
+      usage: /explode player
+      permission: explode.use
+      permission-message: You don't have permission to use this. Now die in a corner.
+
+   milk:
+      description: Make sure people get enough Calcium.
+      usage: /milk player
+      permission: explode.milk
+      permission-message: You don't have permission to use this. Now die in a corner.
+
+   egg:
+      description: Bwuuuuk! Bwuuuuk!
+      usage: /egg player
+      permission: explode.egg
+      permission-message: You don't have permission to use this. Now die in a corner.
+
+   pop:
+      description: Popperde-pop-pop.
+      usage: /pop
+      permission: explode.pop
+      permission-message: You don't have permission to use this. Now die in a corner.
+
+   roll:
+      description: Roll a random number. Numbers are between 1 and 50.
+      usage: /roll
+      permission: explode.roll
+      permission-message: You don't have permission to use this. Now die in a corner.
+   nuke:
+      description: Kim-Jong-un style.
+      usage: /nuke player
+      permission: explode.nuke
+      permission-message: You don't have permission to use this. Now die in a corner.
+   ninja:
+      description: Vanish in a cloud of smoke.
+      usage: /ninja
+      permission: explode.ninja
+      permission-message: You don't have permission to use this. Now die in a corner.
+   fart:
+      description: Fart.
+      usage: /fart
+      permission: explode.fart
+      permission-message: You don't have permission to use this. Now die in a corner.
+   disco:
+      description: Hail the great DrD1sco!
+      usage: /disco
+      permission: explode.disco
+      permission-message: You don't have permission to use this. Now die in a corner.
+   nukearrow:
+      description: Toggle nuke arrows.
+      usage: /NukeArrow
+      permission: nukearrow.use
+      permission-message: You don't have permission to use this. Now die in a corner.
+   speedy:
+      default: op
+      description:
+      usage: /speed
+      permission: potioncommand.speed
+      permission-message: This command is for donators only. Please consider donating.
+   regen:
+      default: op
+      description:
+      usage: /regen
+      permission: potioncommand.regen
+      permission-message: This command is for donators only. Please consider donating.
+   haste:
+      default: op
+      description:
+      usage: /haste
+      permission: potioncommand.haste
+      permission-message: This command is for donators only. Please consider donating.
+   strength:
+      default: op
+      description:
+      usage: /strength
+      permission: potioncommand.strength
+      permission-message: This command is for donators only. Please consider donating.
+   fireResistance:
+      default: op
+      description:
+      usage: /fireresistance
+      permission: potioncommand.fireresistance
+      permission-message: This command is for donators only. Please consider donating.
+   invisibility:
+      default: op
+      description:
+      usage: /invisibility
+      permission: potioncommand.invisibility
+      permission-message: This command is for donators only. Please consider donating.
+   jump:
+      default: op
+      description:
+      usage: /jump
+      permission: potioncommand.jump
+      permission-message: This command is for donators only. Please consider donating.
+   nightvision:
+      default: op
+      description:
+      usage: /nightvision
+      permission: potioncommand.nightvision
+      permission-message: This command is for donators only. Please consider donating.
+   hug:
+      default: true
+      description:
+      usage: /hug name
+      permission: explode.hug
+      permission-message: You do not have permission to hug. Sowwy :c You must feel lonewly.
+   highfive:
+      default: false
+      description:
+      usage: /highfive Name
+      permission: explode.highfive
+      permission-message: You do not have permission to highfive. Sowwy :c You must feel lonewly.
+   kiss:
+      default: true
+      description:
+      usage: /kiss <name>
+      permission-message: awww you can't kiss ;c maybe practise on some dolls?
+   swag:
+      default: true
+      description:
+      usage: Kill yourself.
+      permission-message: No.
+   yolo:
+      default: true
+      description:
+      usage: Kill yourself.
+      permission-message: No.

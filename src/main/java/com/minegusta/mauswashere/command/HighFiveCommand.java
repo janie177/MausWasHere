@@ -1,0 +1,50 @@
+package com.minegusta.mauswashere.command;
+
+import com.censoredsoftware.helper.WrappedCommand;
+import com.google.common.collect.Sets;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Set;
+
+public class HighFiveCommand extends WrappedCommand {
+
+    public HighFiveCommand() {
+        super(false);
+    }
+
+    @Override
+    public Set<String> getCommands() {
+        return Sets.newHashSet("highfive");
+    }
+
+    @Override
+    public boolean processCommand(CommandSender sender, Command command, String[] args) {
+        if (command.getName().equalsIgnoreCase("highfive") && sender.hasPermission("explode.highfive") && !(sender instanceof ConsoleCommandSender)) {
+            try {
+                Player player1 = (Player) sender;
+                Player player2 = Bukkit.getPlayer(args[0]);
+                Location loc1 = player1.getLocation();
+                Location loc2 = player2.getLocation();
+                if (loc1.distance(loc2) > 2.2) {
+                    sender.sendMessage(ChatColor.GOLD + "You are too far away to give a High Five!");
+                } else {
+                    Bukkit.broadcastMessage(ChatColor.BLUE + player1.getName() + " and " + player2.getName() + " High Fived!");
+                    player2.getWorld().spigot().playEffect(loc2, Effect.CRIT, 1, 1, 0F, 1F, 0F, 1F, 60, 10);
+                    player1.getWorld().spigot().playEffect(loc1, Effect.CRIT, 1, 1, 0F, 1F, 0F, 1F, 60, 10);
+                    return true;
+
+                }
+            } catch (Exception e) {
+                sender.sendMessage("Player not found. Try harder! And even if you fail again, atleast you tried!");
+            }
+        }
+        return false;
+    }
+}
