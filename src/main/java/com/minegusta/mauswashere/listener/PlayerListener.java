@@ -18,6 +18,14 @@ public class PlayerListener implements Listener {
         // First join
         if (mPlayer == null) mPlayer = MPlayer.Util.create(player);
 
+        /**
+         * DON'T FORGET TO REMOVE LATER
+         */
+        normalizeMaxHealth(player);
+        /**
+         * DON'T FORGET TO REMOVE LATER
+         */
+
         // Set their last login-time
         Long now = System.currentTimeMillis();
         mPlayer.setLastLoginTime(now);
@@ -29,4 +37,14 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         MPlayer.Util.getPlayer(event.getPlayer()).setLastLogoutTime(now);
     }
+
+    /**
+     * DON'T FORGET TO REMOVE LATER
+     */
+    private static void normalizeMaxHealth(Player player) {
+        if (player.getMaxHealth() > 20.0) player.setMaxHealth(20.0);
+    }
+    /**
+     * DON'T FORGET TO REMOVE LATER
+     */
 }
