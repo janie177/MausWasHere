@@ -152,3 +152,8 @@ commands:
       usage: /MausUnMute <Name>
       permission: mausmute.mute
       permission-message: You don't have permission to use this. Now die in a corner.
+   particle:
+      description: Spark like edward in the sun.
+      usage: /particle
+      permission: minegusta.particles
+      permission-message: You don't have permission to use this. Now die in a corner.

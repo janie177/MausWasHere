@@ -1,11 +1,14 @@
 package com.minegusta.mauswashere.listener;
 
+import com.minegusta.mauswashere.command.EffectCommand;
 import com.minegusta.mauswashere.player.MPlayer;
+import org.bukkit.Effect;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerListener implements Listener {
@@ -17,14 +20,6 @@ public class PlayerListener implements Listener {
 
         // First join
         if (mPlayer == null) mPlayer = MPlayer.Util.create(player);
-
-        /**
-         * DON'T FORGET TO REMOVE LATER
-         */
-        normalizeMaxHealth(player);
-        /**
-         * DON'T FORGET TO REMOVE LATER
-         */
 
         // Set their last login-time
         Long now = System.currentTimeMillis();
@@ -38,13 +33,13 @@ public class PlayerListener implements Listener {
         MPlayer.Util.getPlayer(event.getPlayer()).setLastLogoutTime(now);
     }
 
-    /**
-     * DON'T FORGET TO REMOVE LATER
-     */
-    private static void normalizeMaxHealth(Player player) {
-        if (player.getMaxHealth() > 20.0) player.setMaxHealth(20.0);
+    @EventHandler
+    public void onParticleWalk(PlayerMoveEvent e) {
+        if (EffectCommand.currentEffect.containsKey(e.getPlayer().getName())) {
+            Player player = e.getPlayer();
+            Effect theEffect = EffectCommand.currentEffect.get(player.getName());
+            if (theEffect != null)
+                player.getWorld().spigot().playEffect(player.getLocation(), theEffect, 0, 0, 1F, 0.1F, 1F, 0.5F, 3, 1);
+        }
     }
-    /**
-     * DON'T FORGET TO REMOVE LATER
-     */
 }
