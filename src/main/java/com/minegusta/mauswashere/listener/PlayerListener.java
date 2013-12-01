@@ -39,6 +39,8 @@ public class PlayerListener implements Listener {
         // Set their last login-time
         Long now = System.currentTimeMillis();
         mPlayer.setLastLoginTime(now);
+
+        if(mPlayer.getPunished()) player.sendMessage(mPlayer.getPunishMessage());
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -47,10 +49,7 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         MPlayer mPlayer = MPlayer.Util.getPlayer(event.getPlayer());
         mPlayer.setLastLogoutTime(now);
-        if(mPlayer.getInPvp())
-        {
-            mPlayer.punish("LordKuso", ChatColor.DARK_RED + "LordKuso hath smitten thee for thine acts of logging out during combat.", "sudo " + mPlayer.getPlayerName() + " /cite " + mPlayer.getPlayerName() + "pvp-logging" + "http://");
-        }
+        if(mPlayer.getInPvp()) mPlayer.punish("LordKuso", ChatColor.DARK_RED + "LordKuso hath smitten thee for thine acts of logging out during combat.", "sudo " + mPlayer.getPlayerName() + " /cite " + mPlayer.getPlayerName() + "pvp-logging" + "http://minegusta.com/pvp-log-proof.png");
     }
 
     @EventHandler

@@ -107,6 +107,11 @@ public class MPlayer implements ConfigurationSerializable {
         return !punished.equals("~");
     }
 
+    public String getPunishMessage()
+    {
+        return punished;
+    }
+
     public boolean getInPvp()
     {
         boolean timedData = DataManager.hasTimed(player,  "inPvp");
