@@ -50,9 +50,6 @@ public class ThreadManager {
             save = new BukkitRunnable() {
                 @Override
                 public void run() {
-                    // Save time for reference after saving
-                    long time = System.currentTimeMillis();
-
                     // Save data
                     DataManager.save();
 

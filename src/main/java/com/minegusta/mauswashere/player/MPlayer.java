@@ -5,27 +5,38 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.minegusta.mauswashere.data.DataManager;
+import com.minegusta.mauswashere.data.TimedData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 
 import java.util.*;
 
 public class MPlayer implements ConfigurationSerializable {
-    private String player;
+    private String player, punished;
     private long lastLoginTime, lastLogoutTime;
+    private boolean inPvp;
     private Set<String> deaths;
 
     public MPlayer() {
+        inPvp = false;
+        punished = "~";
         deaths = Sets.newHashSet();
     }
 
     public MPlayer(String player, ConfigurationSection conf) {
         this.player = player;
         lastLoginTime = conf.getLong("lastLoginTime");
+        lastLogoutTime = conf.getLong("lastLogoutTime");
+        inPvp = conf.getBoolean("inPvp");
+        punished = conf.getString("punished");
         deaths = Sets.newHashSet(conf.getStringList("deaths"));
     }
 
@@ -34,6 +45,8 @@ public class MPlayer implements ConfigurationSerializable {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("lastLoginTime", lastLoginTime);
         map.put("lastLogoutTime", lastLogoutTime);
+        map.put("inPvp", inPvp);
+        map.put("punished", punished);
         map.put("deaths", Lists.newArrayList(deaths));
         return map;
     }
@@ -62,6 +75,47 @@ public class MPlayer implements ConfigurationSerializable {
 
     public String getPlayerName() {
         return player;
+    }
+
+    public void setInPvp(int seconds)
+    {
+        DataManager.saveTimed(player, "inPvp", true, seconds);
+        inPvp = true;
+    }
+
+    public void punish(String punisher, String reason, String punishmentCommand)
+    {
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), punishmentCommand);
+        punished = reason;
+        Player player = getOfflinePlayer().getPlayer();
+        LivingEntity fakeKuso = (LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SHEEP);
+        fakeKuso.setCustomName(punisher);
+        fakeKuso.setCustomNameVisible(true);
+        double damage = player.getMaxHealth() + 99.0;
+        player.setLastDamageCause(new EntityDamageByEntityEvent(fakeKuso, player, EntityDamageEvent.DamageCause.MELTING, damage));
+        player.damage(damage);
+        fakeKuso.remove();
+    }
+
+    public void unpunish()
+    {
+        punished = "~";
+    }
+
+    public boolean getPunished()
+    {
+        return !punished.equals("~");
+    }
+
+    public boolean getInPvp()
+    {
+        boolean timedData = DataManager.hasTimed(player,  "inPvp");
+        if(inPvp && !timedData)
+        {
+            inPvp = false;
+            if(getOfflinePlayer().isOnline()) getOfflinePlayer().getPlayer().sendMessage(ChatColor.AQUA + "You may now safely log out.");
+        }
+        return timedData;
     }
 
     public void addDeath() {
