@@ -22,7 +22,7 @@ public class PopCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("explode.pop")) {
+        if (!sender.hasPermission("minegusta.pop")) {
             sender.sendMessage("Nope, No pop for you.");
         } else if (command.getName().equalsIgnoreCase("pop")) {
             if (EntityListener.toggleData.containsKey(sender.getName().toLowerCase()) && EntityListener.toggleData.get(sender.getName().toLowerCase())) {

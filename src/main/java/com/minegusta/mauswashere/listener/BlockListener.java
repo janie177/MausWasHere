@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -33,7 +34,7 @@ public class BlockListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onMineStone(BlockBreakEvent e) {
-        if (!(e.isCancelled()) && e.getPlayer().hasPermission("donatorstuff.spawners")) {
+        if (!(e.isCancelled()) && e.getPlayer().hasPermission("minegusta.donator")) {
             Material block = e.getBlock().getType();
             if (block.equals(Material.MOB_SPAWNER)) {
                 if (e.getPlayer().getItemInHand().containsEnchantment(Enchantment.LOOT_BONUS_BLOCKS)) {
@@ -47,5 +48,22 @@ public class BlockListener implements Listener {
                 }
             }
         }
+
+
+         //Block Nick from breaking.
+
+        if(e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !PlayerListener.nicksPassword.isEmpty()){
+            e.setCancelled(true);
+    }
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onBlockPlace(BlockPlaceEvent e){
+
+        //Stop Nick from wrecking blawks.
+
+        if(e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !PlayerListener.nicksPassword.isEmpty()){
+            e.setCancelled(true);
+    }
     }
 }

@@ -135,7 +135,7 @@ commands:
    desc:
       description: Changes an items description.
       usage: /Desc <Description>
-      permission: donatorstuff.desc
+      permission: minegusta.donator
       permission-message: You don't have permission to use this. Now die in a corner.
    rename:
       description: Rename the item in your hand.

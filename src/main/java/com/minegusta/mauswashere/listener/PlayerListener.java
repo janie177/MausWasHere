@@ -3,10 +3,10 @@ package com.minegusta.mauswashere.listener;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.minegusta.mauswashere.MausWasHere;
 import com.minegusta.mauswashere.command.EffectCommand;
 import com.minegusta.mauswashere.player.MPlayer;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -26,9 +26,10 @@ public class PlayerListener implements Listener {
 
     private static final int PVPLOG_SECONDS = 8;
     private static final List<String> PVPLOG_ENTER_BATTLE_MESSAGE = Lists.newArrayList(ChatColor.RED + "You are now in combat!", ChatColor.RED + "Do not log out until combat is complete.");
+    public static final Set<String> nicksPassword = Sets.newHashSet();
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public final void onPlayerJoin(PlayerJoinEvent event) {
         // Define variables
         Player player = event.getPlayer();
         MPlayer mPlayer = MPlayer.Util.getPlayer(player);
@@ -41,6 +42,11 @@ public class PlayerListener implements Listener {
         mPlayer.setLastLoginTime(now);
 
         if(mPlayer.getPunished()) player.sendMessage(mPlayer.getPunishMessage());
+
+        //Put nick in his map
+        if(event.getPlayer().getName().equalsIgnoreCase("franchesco14")){
+                nicksPassword.add("Franchesco14");
+            }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -60,11 +66,16 @@ public class PlayerListener implements Listener {
             if (theEffect != null)
                 player.getWorld().spigot().playEffect(player.getLocation(), theEffect, 0, 0, 1F, 0.1F, 1F, 0.5F, 3, 30);
         }
+
+        //Block nick from moving.
+        if(e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !nicksPassword.isEmpty()){
+            e.setCancelled(true);
+        }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onCombatTag(EntityDamageByEntityEvent e) {
-        if (e.getEntityType().equals(EntityType.PLAYER) && e.getDamager().getType().equals(EntityType.PLAYER)) {
+        if (e.getEntityType().equals(EntityType.PLAYER) && e.getDamager().getType().equals(EntityType.PLAYER) && !e.isCancelled()) {
             MPlayer player = MPlayer.Util.getPlayer((Player) e.getEntity());
             MPlayer damager = MPlayer.Util.getPlayer((Player) e.getDamager());
             if(!player.getInPvp()) alertPlayerCombatStatus(e.getEntity());

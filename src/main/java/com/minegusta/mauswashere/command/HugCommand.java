@@ -24,7 +24,7 @@ public class HugCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (command.getName().equalsIgnoreCase("hug") && sender.hasPermission("explode.hug")) {
+        if (command.getName().equalsIgnoreCase("hug") && sender.hasPermission("minegusta.hug")) {
             try {
                 if (args[0].equals("*") && sender.hasPermission("hug.all")) {
                     for (Player online : Bukkit.getOnlinePlayers()) {

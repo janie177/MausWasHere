@@ -27,7 +27,7 @@ public class FartCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (command.getName().equalsIgnoreCase("fart") && sender.hasPermission("explode.fart")) {
+        if (command.getName().equalsIgnoreCase("fart") && sender.hasPermission("minegusta.fart")) {
             if (sender instanceof ConsoleCommandSender) return false;
             for (int i = 0; i < 201; i++) {
                 final Player player = (Player) sender;

@@ -27,7 +27,7 @@ public class MuteCommand extends WrappedCommand {
     @Override
     public boolean processCommand(CommandSender s, Command cmd,
                                   String[] args) {
-        if (cmd.getName().equalsIgnoreCase("mausmute") && s.hasPermission("mausmute.mute")) {
+        if (cmd.getName().equalsIgnoreCase("mausmute") && s.hasPermission("minegusta.mute")) {
             try {
                 String p = Bukkit.getServer().getPlayer(args[0]).getName();
                 mutedMap.put(p, true);
@@ -38,7 +38,7 @@ public class MuteCommand extends WrappedCommand {
             } catch (Exception e) {
                 s.sendMessage(ChatColor.RED + "Invalid playername.");
             }
-        } else if (cmd.getName().equalsIgnoreCase("mausunmute") && s.hasPermission("mausmute.mute")) {
+        } else if (cmd.getName().equalsIgnoreCase("mausunmute") && s.hasPermission("minegusta.mute")) {
             try {
                 String p = Bukkit.getServer().getPlayer(args[0]).getName();
                 mutedMap.put(p, false);

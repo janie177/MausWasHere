@@ -24,7 +24,7 @@ public class NukeCommand extends WrappedCommand {
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
         if (!sender.hasPermission("explode.nuke")) {
             sender.sendMessage("Nice try " + sender + ", no permissions for you >:3");
-        } else if (command.getName().equalsIgnoreCase("nuke") && sender.hasPermission("explode.nuke")) {
+        } else if (command.getName().equalsIgnoreCase("nuke") && sender.hasPermission("minegusta.nuke")) {
             try {
                 final Location target = Bukkit.getServer().getPlayer(args[0]).getLocation();
                 for (int i = 0; i < 60; i++) {

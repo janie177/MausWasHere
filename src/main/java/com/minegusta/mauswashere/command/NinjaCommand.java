@@ -27,7 +27,7 @@ public class NinjaCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(final CommandSender sender, Command command, String[] args) {
-        if (command.getName().equalsIgnoreCase("ninja") && sender.hasPermission("explode.ninja")) {
+        if (command.getName().equalsIgnoreCase("ninja") && sender.hasPermission("minegusta.ninja")) {
             if (sender instanceof ConsoleCommandSender) return false;
             final Location target = Bukkit.getServer().getPlayer(sender.getName()).getLocation();
             for (int i = 0; i < 51; i++) {

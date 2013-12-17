@@ -36,8 +36,6 @@ public class KissCommand extends WrappedCommand {
                 if (s.getName().equalsIgnoreCase(args[0])) {
                     s.sendMessage(ChatColor.LIGHT_PURPLE + "You awkwardly fold your tongue in a failed attempt to kiss yourself.");
                     return true;
-                } else if (args[0].equalsIgnoreCase("_Kennon_") && !(s.getName().equalsIgnoreCase("janie177"))) {
-                    s.sendMessage(ChatColor.DARK_RED + "STAY AWAY FROM MY KENNON YOU PERV.");
                 } else if (args[0].equalsIgnoreCase("Me") || args[0].equalsIgnoreCase("Myself") || args[0].equalsIgnoreCase("Animals") || args[0].equalsIgnoreCase("kiss") || args[0].equalsIgnoreCase("ladygaga")) {
                     s.sendMessage(ChatColor.DARK_RED + "No. Just no. I won't do that. Creep.");
                 } else {

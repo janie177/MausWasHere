@@ -23,7 +23,7 @@ public class EggCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command c, String[] args) {
-        if (!sender.hasPermission("explode.egg")) {
+        if (!sender.hasPermission("minegusta.egg")) {
             sender.sendMessage("You do not have permission to be a chicken. You can be a pig though.");
         } else if (c.getName().equalsIgnoreCase("egg")) {
             try {

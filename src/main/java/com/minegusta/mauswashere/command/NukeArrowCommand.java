@@ -24,7 +24,7 @@ public class NukeArrowCommand extends WrappedCommand {
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
 
         String playerName = sender.getName();
-        if (command.getName().equalsIgnoreCase("nukearrow") && sender.hasPermission("nukearrow.use") && !ProjectileListener.toggleNuke.contains(playerName)) {
+        if (command.getName().equalsIgnoreCase("nukearrow") && sender.hasPermission("minegusta.nukearrow") && !ProjectileListener.toggleNuke.contains(playerName)) {
             ProjectileListener.toggleNuke.add(playerName);
             sender.sendMessage(ChatColor.YELLOW + "You have enabled arrow nukes. Firing an arrow will cost you 30 tnt.");
             return true;

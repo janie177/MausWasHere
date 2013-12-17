@@ -26,7 +26,7 @@ public class HighFiveCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (command.getName().equalsIgnoreCase("highfive") && sender.hasPermission("explode.highfive") && !(sender instanceof ConsoleCommandSender)) {
+        if (command.getName().equalsIgnoreCase("highfive") && sender.hasPermission("minegusta.highfive") && !(sender instanceof ConsoleCommandSender)) {
             try {
                 Player player1 = (Player) sender;
                 Player player2 = Bukkit.getPlayer(args[0]);

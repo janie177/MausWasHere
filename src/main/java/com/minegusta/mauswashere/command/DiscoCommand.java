@@ -26,7 +26,7 @@ public class DiscoCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command c, String[] args) {
-        if (c.getName().equalsIgnoreCase("disco") && sender.hasPermission("explode.disco")) {
+        if (c.getName().equalsIgnoreCase("disco") && sender.hasPermission("minegusta.disco")) {
             if (sender instanceof ConsoleCommandSender) return false;
             for (int i = 0; i < 600; i++) {
                 Player player = (Player) sender;

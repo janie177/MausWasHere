@@ -23,7 +23,7 @@ public class RollCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(final CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("explode.roll")) {
+        if (!sender.hasPermission("minegusta.roll")) {
             sender.sendMessage("You do not have permissions to roll. They won't see you rollin'.");
         } else if (command.getName().equalsIgnoreCase("roll")) {
             int number = Randoms.generateIntRange(1, 50);

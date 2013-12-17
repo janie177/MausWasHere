@@ -25,7 +25,7 @@ public class MilkCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("explode.milk")) {
+        if (!sender.hasPermission("minegusta.milk")) {
             sender.sendMessage("Only Crunchy may give milk!");
         } else if (command.getName().equalsIgnoreCase("milk")) {
             try {

@@ -23,7 +23,7 @@ public class ExplodeCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender sender, Command command, String[] args) {
-        if (!sender.hasPermission("explode.use")) {
+        if (!sender.hasPermission("minegusta.explode")) {
             sender.sendMessage("Nice try " + sender + ", no permissions for you >:3");
         } else if (command.getName().equalsIgnoreCase("explode") && sender.hasPermission("explode.use")) {
             try {

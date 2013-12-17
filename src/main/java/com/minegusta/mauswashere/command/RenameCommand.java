@@ -28,7 +28,7 @@ public class RenameCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(final CommandSender sender, Command command, String[] args) {
-        if (command.getName().equalsIgnoreCase("rename") && sender.hasPermission("donatorstuff.rename") && sender instanceof Player) {
+        if (command.getName().equalsIgnoreCase("rename") && sender.hasPermission("minegusta.donator") && sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.GOLD + "/Rename " + ChatColor.YELLOW + "<New Name> " + ChatColor.DARK_GRAY + ": Lets you rename the held item. Color codes supported!");
@@ -59,7 +59,7 @@ public class RenameCommand extends WrappedCommand {
             }
 
         }
-        if (command.getName().equalsIgnoreCase("desc") && sender.hasPermission("donatorstuff.desc") && sender instanceof Player) {
+        if (command.getName().equalsIgnoreCase("desc") && sender.hasPermission("minegusta.donator") && sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.GOLD + "/desc " + ChatColor.YELLOW + "<New Description> " + ChatColor.DARK_GRAY + ": Lets you rename the held item's info. Color codes supported!");
@@ -75,7 +75,15 @@ public class RenameCommand extends WrappedCommand {
                     if (newName.length() > 64) {
                         p.sendMessage(ChatColor.RED + "[Renamer]" + ChatColor.DARK_RED + "That description is too long! It would crash players.");
                         return true;
-                    } else {
+                    }
+                    else if(newName.contains("Mystery Box"))return false;
+                    else if(newName.contains("Helmet Of The Fat Man"))return false;
+                    else if(newName.contains("Pants Of Life"))return false;
+                    else if(newName.contains("Blade Of The Slayer"))return false;
+                    else if(newName.contains("Boots Of The Swift"))return false;
+                    else if(newName.contains("God Apple"))return false;
+                    else if(newName.contains("Platebody Of Darkness"))return false;
+                    else {
 
                         ArrayList<String> lore = new ArrayList<String>();
                         lore.clear();
