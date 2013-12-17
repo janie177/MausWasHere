@@ -6,51 +6,51 @@ commands:
    explode:
       description: Make someone go boom.
       usage: /explode player
-      permission: explode.use
+      permission: minegusta.explode
       permission-message: You don't have permission to use this. Now die in a corner.
 
    milk:
       description: Make sure people get enough Calcium.
       usage: /milk player
-      permission: explode.milk
+      permission: minegusta.milk
       permission-message: You don't have permission to use this. Now die in a corner.
 
    egg:
       description: Bwuuuuk! Bwuuuuk!
       usage: /egg player
-      permission: explode.egg
+      permission: minegusta.egg
       permission-message: You don't have permission to use this. Now die in a corner.
 
    pop:
       description: Popperde-pop-pop.
       usage: /pop
-      permission: explode.pop
+      permission: minegusta.pop
       permission-message: You don't have permission to use this. Now die in a corner.
 
    roll:
       description: Roll a random number. Numbers are between 1 and 50.
       usage: /roll
-      permission: explode.roll
+      permission: minegusta.roll
       permission-message: You don't have permission to use this. Now die in a corner.
    nuke:
       description: Kim-Jong-un style.
       usage: /nuke player
-      permission: explode.nuke
+      permission: minegusta.nuke
       permission-message: You don't have permission to use this. Now die in a corner.
    ninja:
       description: Vanish in a cloud of smoke.
       usage: /ninja
-      permission: explode.ninja
+      permission: minegusta.ninja
       permission-message: You don't have permission to use this. Now die in a corner.
    fart:
       description: Fart.
       usage: /fart
-      permission: explode.fart
+      permission: minegusta.fart
       permission-message: You don't have permission to use this. Now die in a corner.
    disco:
       description: Hail the great DrD1sco!
       usage: /disco
-      permission: explode.disco
+      permission: minegusta.disco
       permission-message: You don't have permission to use this. Now die in a corner.
    nukearrow:
       description: Toggle nuke arrows.
@@ -109,13 +109,13 @@ commands:
       default: true
       description:
       usage: /hug name
-      permission: explode.hug
+      permission: minegusta.hug
       permission-message: You do not have permission to hug. Sowwy :c You must feel lonewly.
    highfive:
       default: false
       description:
       usage: /highfive Name
-      permission: explode.highfive
+      permission: minegusta.highfive
       permission-message: You do not have permission to highfive. Sowwy :c You must feel lonewly.
    kiss:
       default: true
@@ -140,17 +140,17 @@ commands:
    rename:
       description: Rename the item in your hand.
       usage: /Rename <New name>
-      permission: donatorstuff.rename
+      permission: minegusta.rename
       permission-message: You don't have permission to use this. Now die in a corner.
    mausmute:
       description: Mute someone like a maus.
       usage: /MausMute <Name>
-      permission: mausmute.mute
+      permission: minegusta.mute
       permission-message: You don't have permission to use this. Now die in a corner.
    mausunmute:
       description: UnMute someone like a maus.
       usage: /MausUnMute <Name>
-      permission: mausmute.mute
+      permission: minegusta.mute
       permission-message: You don't have permission to use this. Now die in a corner.
    particle:
       description: Spark like edward in the sun.
