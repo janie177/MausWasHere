@@ -157,3 +157,53 @@ commands:
       usage: /particle
       permission: minegusta.particles
       permission-message: You don't have permission to use this. Now die in a corner.
+
+permissions:
+   minegusta.hug:
+     description: hug people
+     default: op
+   minegusta.mute:
+     description: mute people
+     default: op
+   minegusta.explode:
+     description: explode someone
+     default: op
+   minegusta.milk:
+     description: milk someone
+     default: op
+   minegusta.egg:
+     description: egg someone
+     default: op
+   minegusta.pop:
+     description: popper the pop
+     default: op
+   minegusta.roll:
+     description: Roll a random number between 1 and 50
+     default: op
+   minegusta.nuke:
+     description: NUKEEEEEE
+     default: op
+   minegusta.ninja:
+     description: Like a ninja.
+     default: op
+   minegusta.fart:
+     description: Fart on yourself. U lil shit.
+     default: op
+   minegusta.nukearrow:
+     description: NUKE THEM SHIZZLE
+     default: op
+   minegusta.highfive:
+     description: Highfive people
+     default: op
+   minegusta.kiss:
+     description: Kiss people
+     default: op
+   minegusta.desc:
+     description: Descriptions for items
+     default: op
+   minegusta.rename:
+     description: Rename items
+     default: op
+   minegusta.particle:
+     description: Particles
+     default: op

@@ -26,7 +26,7 @@ public class RollCommand extends WrappedCommand {
         if (!sender.hasPermission("minegusta.roll")) {
             sender.sendMessage("You do not have permissions to roll. They won't see you rollin'.");
         } else if (command.getName().equalsIgnoreCase("roll")) {
-            int number = Randoms.generateIntRange(1, 50);
+            int number = Randoms.generateIntRange(1, 51);
             Bukkit.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + "-----------------------------");
             Bukkit.getServer().broadcastMessage(ChatColor.GOLD + sender.getName() + " rolled " + ChatColor.DARK_RED + number);
             Bukkit.getServer().broadcastMessage(ChatColor.LIGHT_PURPLE + "-----------------------------");
