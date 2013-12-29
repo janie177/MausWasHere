@@ -124,6 +124,7 @@ public class BlockListener implements Listener {
                     } else if (spawner.getItemMeta().getLore().contains("SilverFish")) {
                         placedSpawner.setSpawnedType(EntityType.SILVERFISH);
                     }
+                    placedSpawner.update();
                 }
             }
         }
