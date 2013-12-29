@@ -4,7 +4,9 @@ import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -47,32 +49,36 @@ public class BlockListener implements Listener {
                     e.setCancelled(true);
                 } else {
 
-                    @SuppressWarnings("deprecation")
-                    byte data = e.getBlock().getData();
-                    String mobType = "Pig";
-                    switch (data) {
-                        case 90:
-                            mobType = ChatColor.LIGHT_PURPLE + "Pig";
-                            break;
-                        case 51:
-                            mobType = ChatColor.GRAY + "Skeleton";
-                            break;
-                        case 52:
-                            mobType = ChatColor.DARK_GRAY + "Spider";
-                            break;
-                        case 54:
-                            mobType = ChatColor.DARK_GREEN + "Zombie";
-                            break;
-                        case 59:
-                            mobType = ChatColor.DARK_PURPLE + "Cave Spider";
-                            break;
-                        case 61:
-                            mobType = ChatColor.GOLD + "Blaze";
-                            break;
+
+                    CreatureSpawner spawner = (CreatureSpawner) e.getBlock();
+                        String mobType = "Pig";
+                        EntityType entity = spawner.getSpawnedType();
+                        switch (entity) {
+                            case PIG:
+                                mobType = ChatColor.LIGHT_PURPLE + "Pig";
+                                break;
+                            case SKELETON:
+                                mobType = ChatColor.WHITE + "Skeleton";
+                                break;
+                            case SPIDER:
+                                mobType = ChatColor.BLACK + "Spider";
+                                break;
+                            case ZOMBIE:
+                                mobType = ChatColor.DARK_GREEN + "Zombie";
+                                break;
+                            case CAVE_SPIDER:
+                                mobType = ChatColor.DARK_PURPLE + "Cave Spider";
+                                break;
+                            case BLAZE:
+                                mobType = ChatColor.GOLD + "Blaze";
+                                break;
+                            case SILVERFISH:
+                                mobType = ChatColor.GRAY + "SilverFish";
+                                break;
                     }
 
 
-                    ItemStack mobSpawner = new ItemStack(Material.MOB_SPAWNER, 1, data);
+                    ItemStack mobSpawner = new ItemStack(Material.MOB_SPAWNER, 1);
                     ArrayList<String> spawnerType = Lists.newArrayList();
                     spawnerType.add(mobType + " Spawner");
                     ItemMeta meta = mobSpawner.getItemMeta();
@@ -102,21 +108,22 @@ public class BlockListener implements Listener {
         if (spawner.getType().equals(Material.MOB_SPAWNER) && !e.isCancelled()) {
             if (spawner.getItemMeta().hasLore()) {
                 if (spawner.getItemMeta().getLore().contains("Spawner")) {
-                    byte data = e.getBlockPlaced().getData();
+                    CreatureSpawner placedSpawner = (CreatureSpawner) block;
                     if (spawner.getItemMeta().getLore().contains("Pig")) {
-                        data = 90;
+                        placedSpawner.setSpawnedType(EntityType.PIG);
                     } else if (spawner.getItemMeta().getLore().contains("Skeleton")) {
-                        data = 51;
+                        placedSpawner.setSpawnedType(EntityType.SKELETON);
                     } else if (spawner.getItemMeta().getLore().contains("Spider")) {
-                        data = 52;
+                        placedSpawner.setSpawnedType(EntityType.SPIDER);
                     } else if (spawner.getItemMeta().getLore().contains("Zombie")) {
-                        data = 54;
+                        placedSpawner.setSpawnedType(EntityType.ZOMBIE);
                     } else if (spawner.getItemMeta().getLore().contains("Cave Spider")) {
-                        data = 59;
+                        placedSpawner.setSpawnedType(EntityType.CAVE_SPIDER);
                     } else if (spawner.getItemMeta().getLore().contains("Blaze")) {
-                        data = 61;
+                        placedSpawner.setSpawnedType(EntityType.BLAZE);
+                    } else if (spawner.getItemMeta().getLore().contains("SilverFish")) {
+                        placedSpawner.setSpawnedType(EntityType.SILVERFISH);
                     }
-                    block.setData(data);
                 }
             }
         }
