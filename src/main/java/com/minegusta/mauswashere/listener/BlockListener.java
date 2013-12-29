@@ -1,6 +1,7 @@
 package com.minegusta.mauswashere.listener;
 
 import com.google.common.collect.Lists;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -107,21 +108,21 @@ public class BlockListener implements Listener {
         ItemStack spawner = e.getItemInHand();
         if (spawner.getType().equals(Material.MOB_SPAWNER) && !e.isCancelled()) {
             if (spawner.getItemMeta().hasLore()) {
-                if (spawner.getItemMeta().getLore().contains("Spawner")) {
+                if (spawner.getItemMeta().getLore().toString().contains("Spawner")) {
                     CreatureSpawner placedSpawner = (CreatureSpawner) block.getState();
-                    if (spawner.getItemMeta().getLore().contains("Pig")) {
+                    if (spawner.getItemMeta().getLore().toString().contains("Pig")) {
                         placedSpawner.setSpawnedType(EntityType.PIG);
-                    } else if (spawner.getItemMeta().getLore().contains("Skeleton")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("Skeleton")) {
                         placedSpawner.setSpawnedType(EntityType.SKELETON);
-                    } else if (spawner.getItemMeta().getLore().contains("Spider")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("Spider")) {
                         placedSpawner.setSpawnedType(EntityType.SPIDER);
-                    } else if (spawner.getItemMeta().getLore().contains("Zombie")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("Zombie")) {
                         placedSpawner.setSpawnedType(EntityType.ZOMBIE);
-                    } else if (spawner.getItemMeta().getLore().contains("Cave Spider")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("Cave Spider")) {
                         placedSpawner.setSpawnedType(EntityType.CAVE_SPIDER);
-                    } else if (spawner.getItemMeta().getLore().contains("Blaze")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("Blaze")) {
                         placedSpawner.setSpawnedType(EntityType.BLAZE);
-                    } else if (spawner.getItemMeta().getLore().contains("SilverFish")) {
+                    } else if (spawner.getItemMeta().getLore().toString().contains("SilverFish")) {
                         placedSpawner.setSpawnedType(EntityType.SILVERFISH);
                     }
                     placedSpawner.update();
