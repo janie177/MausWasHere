@@ -5,7 +5,6 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.minegusta.mauswashere.data.DataManager;
-import com.minegusta.mauswashere.data.TimedData;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -77,14 +76,12 @@ public class MPlayer implements ConfigurationSerializable {
         return player;
     }
 
-    public void setInPvp(int seconds)
-    {
+    public void setInPvp(int seconds) {
         DataManager.saveTimed(player, "inPvp", true, seconds);
         inPvp = true;
     }
 
-    public void punish(String punisher, String reason, String punishmentCommand)
-    {
+    public void punish(String punisher, String reason, String punishmentCommand) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), punishmentCommand);
         punished = reason;
         Player player = getOfflinePlayer().getPlayer();
@@ -97,28 +94,24 @@ public class MPlayer implements ConfigurationSerializable {
         fakeKuso.remove();
     }
 
-    public void unpunish()
-    {
+    public void unpunish() {
         punished = "~";
     }
 
-    public boolean getPunished()
-    {
+    public boolean getPunished() {
         return !punished.equals("~");
     }
 
-    public String getPunishMessage()
-    {
+    public String getPunishMessage() {
         return punished;
     }
 
-    public boolean getInPvp()
-    {
-        boolean timedData = DataManager.hasTimed(player,  "inPvp");
-        if(inPvp && !timedData)
-        {
+    public boolean getInPvp() {
+        boolean timedData = DataManager.hasTimed(player, "inPvp");
+        if (inPvp && !timedData) {
             inPvp = false;
-            if(getOfflinePlayer().isOnline()) getOfflinePlayer().getPlayer().sendMessage(ChatColor.AQUA + "You may now safely log out.");
+            if (getOfflinePlayer().isOnline())
+                getOfflinePlayer().getPlayer().sendMessage(ChatColor.AQUA + "You may now safely log out.");
         }
         return timedData;
     }

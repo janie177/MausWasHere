@@ -1,12 +1,11 @@
 package com.minegusta.mauswashere.listener;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import com.minegusta.mauswashere.MausWasHere;
 import com.minegusta.mauswashere.command.EffectCommand;
 import com.minegusta.mauswashere.player.MPlayer;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -20,7 +19,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
 
 public class PlayerListener implements Listener {
 
@@ -41,12 +39,12 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         mPlayer.setLastLoginTime(now);
 
-        if(mPlayer.getPunished()) player.sendMessage(mPlayer.getPunishMessage());
+        if (mPlayer.getPunished()) player.sendMessage(mPlayer.getPunishMessage());
 
         //Put nick in his map
-        if(event.getPlayer().getName().equalsIgnoreCase("franchesco14")){
-                nicksPassword.add("Franchesco14");
-            }
+        if (event.getPlayer().getName().equalsIgnoreCase("franchesco14")) {
+            nicksPassword.add("Franchesco14");
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -55,7 +53,8 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         MPlayer mPlayer = MPlayer.Util.getPlayer(event.getPlayer());
         mPlayer.setLastLogoutTime(now);
-        if(mPlayer.getInPvp()) mPlayer.punish("LordKuso", ChatColor.DARK_RED + "LordKuso hath smitten thee for thine acts of logging out during combat.", "sudo " + mPlayer.getPlayerName() + " /cite " + mPlayer.getPlayerName() + "pvp-logging" + "http://minegusta.com/pvp-log-proof.png");
+        if (mPlayer.getInPvp())
+            mPlayer.punish("LordKuso", ChatColor.DARK_RED + "LordKuso hath smitten thee for thine acts of logging out during combat.", "sudo " + mPlayer.getPlayerName() + " /cite " + mPlayer.getPlayerName() + "pvp-logging" + "http://minegusta.com/pvp-log-proof.png");
     }
 
     @EventHandler
@@ -68,7 +67,7 @@ public class PlayerListener implements Listener {
         }
 
         //Block nick from moving.
-        if(e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !nicksPassword.isEmpty()){
+        if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !nicksPassword.isEmpty()) {
             e.setCancelled(true);
         }
     }
@@ -78,18 +77,17 @@ public class PlayerListener implements Listener {
         if (e.getEntityType().equals(EntityType.PLAYER) && e.getDamager().getType().equals(EntityType.PLAYER) && !e.isCancelled()) {
             MPlayer player = MPlayer.Util.getPlayer((Player) e.getEntity());
             MPlayer damager = MPlayer.Util.getPlayer((Player) e.getDamager());
-            if(!player.getInPvp()) alertPlayerCombatStatus(e.getEntity());
-            if(!damager.getInPvp()) alertPlayerCombatStatus(e.getDamager());
+            if (!player.getInPvp()) alertPlayerCombatStatus(e.getEntity());
+            if (!damager.getInPvp()) alertPlayerCombatStatus(e.getDamager());
             player.setInPvp(PVPLOG_SECONDS);
             damager.setInPvp(PVPLOG_SECONDS);
         }
     }
 
-    private void alertPlayerCombatStatus(Entity entity)
-    {
-        assert(entity instanceof Player);
+    private void alertPlayerCombatStatus(Entity entity) {
+        assert (entity instanceof Player);
         Player player = (Player) entity;
-        for(String line : PVPLOG_ENTER_BATTLE_MESSAGE)
+        for (String line : PVPLOG_ENTER_BATTLE_MESSAGE)
             player.sendMessage(line);
     }
 }
