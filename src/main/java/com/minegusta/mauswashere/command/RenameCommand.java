@@ -82,7 +82,10 @@ public class RenameCommand extends WrappedCommand {
                     else if (newName.contains("Boots Of The Swift")) return false;
                     else if (newName.contains("God Apple")) return false;
                     else if (newName.contains("Platebody Of Darkness")) return false;
-                    else if (p.getItemInHand().getType().equals(Material.MOB_SPAWNER)) return false;
+                    else if (p.getItemInHand().getType().equals(Material.MOB_SPAWNER)){
+                        p.sendMessage(ChatColor.RED + "[Renamer]" + ChatColor.DARK_RED + "You cannot change a mob spawner's meta!");
+                        return false;
+                    }
                     else {
 
                         ArrayList<String> lore = new ArrayList<String>();

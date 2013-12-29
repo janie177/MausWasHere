@@ -80,7 +80,7 @@ public class BlockListener implements Listener {
                     mobSpawner.setItemMeta(meta);
 
 
-                    e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), new ItemStack(Material.MOB_SPAWNER, 1, data));
+                    e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), mobSpawner);
                     e.setExpToDrop(0);
 
                 }
