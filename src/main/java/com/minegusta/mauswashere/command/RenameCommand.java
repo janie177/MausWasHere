@@ -75,18 +75,16 @@ public class RenameCommand extends WrappedCommand {
                     if (newName.length() > 64) {
                         p.sendMessage(ChatColor.RED + "[Renamer]" + ChatColor.DARK_RED + "That description is too long! It would crash players.");
                         return true;
-                    }
-                    else if (newName.contains("Mystery Box")) return false;
+                    } else if (newName.contains("Mystery Box")) return false;
                     else if (newName.contains("Helmet Of The Fat Man")) return false;
                     else if (newName.contains("Pants Of Life")) return false;
                     else if (newName.contains("Blade Of The Slayer")) return false;
                     else if (newName.contains("Boots Of The Swift")) return false;
                     else if (newName.contains("God Apple")) return false;
                     else if (newName.contains("Platebody Of Darkness")) return false;
-                    else if (p.getItemInHand().getType().equals(Material.MOB_SPAWNER)){
+                    else if (p.getItemInHand().getType().equals(Material.MOB_SPAWNER)) {
                         p.sendMessage(ChatColor.RED + "[Renamer]" + ChatColor.DARK_RED + "You cannot change a mob spawner's meta!");
-                    }
-                    else {
+                    } else {
 
                         ArrayList<String> lore = new ArrayList<String>();
                         lore.clear();

@@ -50,31 +50,31 @@ public class BlockListener implements Listener {
                 } else {
 
 
-                    CreatureSpawner spawner = (CreatureSpawner) e.getBlock();
-                        String mobType = "Pig";
-                        EntityType entity = spawner.getSpawnedType();
-                        switch (entity) {
-                            case PIG:
-                                mobType = ChatColor.LIGHT_PURPLE + "Pig";
-                                break;
-                            case SKELETON:
-                                mobType = ChatColor.WHITE + "Skeleton";
-                                break;
-                            case SPIDER:
-                                mobType = ChatColor.BLACK + "Spider";
-                                break;
-                            case ZOMBIE:
-                                mobType = ChatColor.DARK_GREEN + "Zombie";
-                                break;
-                            case CAVE_SPIDER:
-                                mobType = ChatColor.DARK_PURPLE + "Cave Spider";
-                                break;
-                            case BLAZE:
-                                mobType = ChatColor.GOLD + "Blaze";
-                                break;
-                            case SILVERFISH:
-                                mobType = ChatColor.GRAY + "SilverFish";
-                                break;
+                    CreatureSpawner spawner = (CreatureSpawner) e.getBlock().getState();
+                    String mobType = "Pig";
+                    EntityType entity = spawner.getSpawnedType();
+                    switch (entity) {
+                        case PIG:
+                            mobType = ChatColor.LIGHT_PURPLE + "Pig";
+                            break;
+                        case SKELETON:
+                            mobType = ChatColor.WHITE + "Skeleton";
+                            break;
+                        case SPIDER:
+                            mobType = ChatColor.BLACK + "Spider";
+                            break;
+                        case ZOMBIE:
+                            mobType = ChatColor.DARK_GREEN + "Zombie";
+                            break;
+                        case CAVE_SPIDER:
+                            mobType = ChatColor.DARK_PURPLE + "Cave Spider";
+                            break;
+                        case BLAZE:
+                            mobType = ChatColor.GOLD + "Blaze";
+                            break;
+                        case SILVERFISH:
+                            mobType = ChatColor.GRAY + "SilverFish";
+                            break;
                     }
 
 
@@ -108,7 +108,7 @@ public class BlockListener implements Listener {
         if (spawner.getType().equals(Material.MOB_SPAWNER) && !e.isCancelled()) {
             if (spawner.getItemMeta().hasLore()) {
                 if (spawner.getItemMeta().getLore().contains("Spawner")) {
-                    CreatureSpawner placedSpawner = (CreatureSpawner) block;
+                    CreatureSpawner placedSpawner = (CreatureSpawner) block.getState();
                     if (spawner.getItemMeta().getLore().contains("Pig")) {
                         placedSpawner.setSpawnedType(EntityType.PIG);
                     } else if (spawner.getItemMeta().getLore().contains("Skeleton")) {
