@@ -84,14 +84,6 @@ public class MPlayer implements ConfigurationSerializable {
     public void punish(String punisher, String reason, String punishmentCommand) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), punishmentCommand);
         punished = reason;
-        Player player = getOfflinePlayer().getPlayer();
-        LivingEntity fakeKuso = (LivingEntity) player.getWorld().spawnEntity(player.getLocation(), EntityType.SHEEP);
-        fakeKuso.setCustomName(punisher);
-        fakeKuso.setCustomNameVisible(true);
-        double damage = player.getMaxHealth() + 99.0;
-        player.setLastDamageCause(new EntityDamageByEntityEvent(fakeKuso, player, EntityDamageEvent.DamageCause.MELTING, damage));
-        player.damage(damage);
-        fakeKuso.remove();
     }
 
     public void unpunish() {

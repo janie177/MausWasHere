@@ -59,7 +59,7 @@ public class RenameCommand extends WrappedCommand {
             }
 
         }
-        if (command.getName().equalsIgnoreCase("desc") && sender.hasPermission("minegusta.donator") && sender instanceof Player) {
+        if (command.getName().equalsIgnoreCase("desc") && sender.hasPermission("minegusta.donator") && sender instanceof Player && sender.isOp()) {
             Player p = (Player) sender;
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.GOLD + "/desc " + ChatColor.YELLOW + "<New Description> " + ChatColor.DARK_GRAY + ": Lets you rename the held item's info. Color codes supported!");
