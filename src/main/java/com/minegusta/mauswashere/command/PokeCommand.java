@@ -27,7 +27,7 @@ public class PokeCommand extends WrappedCommand {
     @Override
     public boolean processCommand(CommandSender s, Command cmd, String[] args) {
         if(cmd.getName().equalsIgnoreCase("poke")){
-            List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:",ChatColor.GRAY + "/Poke <Name> <object>", "So like:" + ChatColor.GRAY + "/Poke _Kennon_ A Stinky Fish.");
+            List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:",ChatColor.GRAY + "/Poke <Name> <object>");
             List<String> wrongPlayer = Lists.newArrayList(ChatColor.RED + "Player not found!!");
             Player p = (Player) s;
 
@@ -42,8 +42,8 @@ public class PokeCommand extends WrappedCommand {
                 objectList.remove(args[0]);
                 String object = joiner.join(objectList);
 
-                p.sendMessage(ChatColor.YELLOW + "You poked " + ChatColor.ITALIC + victim.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
-                victim.sendMessage(ChatColor.YELLOW + "You were poked by " + ChatColor.ITALIC + p.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
+                p.sendMessage(ChatColor.YELLOW + "You poked " + ChatColor.ITALIC + victim.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + object + ChatColor.YELLOW + "!");
+                victim.sendMessage(ChatColor.YELLOW + "You were poked by " + ChatColor.ITALIC + p.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + object + ChatColor.YELLOW + "!");
 
             } catch(Exception e){
                 sendText(p, wrongPlayer);

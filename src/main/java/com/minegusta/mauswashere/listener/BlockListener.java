@@ -296,14 +296,11 @@ public class BlockListener implements Listener {
             {}
     }
 
-    //First y, then the rest.
     private static void rocketPlayer(Player player) {
         Vector direction = player.getLocation().getDirection();
         player.getWorld().playSound(player.getLocation(),
                 Sound.GHAST_FIREBALL, 1.0F, 1.0F);
-        player.setVelocity(direction.setY(0.5).multiply(3.0));
-        player.setVelocity(player.getLocation().getDirection()
-                .multiply(3.0));
+        player.setVelocity(direction.multiply(3));
         noFallDamage.add(player.getName());
     }
 
