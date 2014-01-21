@@ -157,6 +157,11 @@ commands:
       usage: /particle
       permission: minegusta.particles
       permission-message: You don't have permission to use this. Now die in a corner.
+   poke:
+      description: Poke someone.
+      usage: /poke <name> <object>
+      default: true
+      permission-message: In sovjet Minegusta, console poke you!!
 
 permissions:
    minegusta.hug:

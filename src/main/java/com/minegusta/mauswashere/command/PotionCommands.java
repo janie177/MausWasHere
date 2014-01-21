@@ -25,9 +25,9 @@ public class PotionCommands extends WrappedCommand {
         return Sets.newHashSet("speedy", "haste", "strength", "fireresistance", "regen", "invisibility", "jump", "nightvision");
     }
 
-    private int duration = 400;
+    private int duration = 1200;
     private int strength = 1;
-    private int coolDownTime = 60;
+    private int coolDownTime = 180;
 
     private Map<String, Long> potionCooldowns = new HashMap<String, Long>();
 

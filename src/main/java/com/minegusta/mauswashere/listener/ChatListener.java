@@ -44,5 +44,12 @@ public class ChatListener implements Listener {
                 e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
             }
         }
+        else if(e.getMessage().toLowerCase().startsWith("/")){
+            if(e.getPlayer().isOp()){
+                if(e.getMessage().contains("119") || e.getMessage().toLowerCase().contains("portal")){
+                    e.setCancelled(true);
+                }
+            }
+        }
     }
 }
