@@ -26,27 +26,30 @@ public class PokeCommand extends WrappedCommand {
 
     @Override
     public boolean processCommand(CommandSender s, Command cmd, String[] args) {
-        List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:", "/Poke <Name> <object>", "So like: /Poke _Kennon_ A Stinky Fish.");
-        List<String> wrongPlayer = Lists.newArrayList(ChatColor.RED + "Player not found!!");
-        Player p = (Player) s;
+        if(cmd.getName().equalsIgnoreCase("poke")){
+            List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:", "/Poke <Name> <object>", "So like: /Poke _Kennon_ A Stinky Fish.");
+            List<String> wrongPlayer = Lists.newArrayList(ChatColor.RED + "Player not found!!");
+            Player p = (Player) s;
 
-        if(args.length < 2){
-            sendText(p, help);
-            return true;
-        }
-        try{
-            Player victim = Bukkit.getOfflinePlayer(args[0]).getPlayer();
-            Joiner joiner = Joiner.on(" ").skipNulls();
-            List<String> objectList = Lists.newArrayList(args);
-            objectList.remove(args[0]);
-            String object = joiner.join(objectList);
+            if(args.length < 2){
+                sendText(p, help);
+                return true;
+            }
+            try{
+                Player victim = Bukkit.getOfflinePlayer(args[0]).getPlayer();
+                Joiner joiner = Joiner.on(" ").skipNulls();
+                List<String> objectList = Lists.newArrayList(args);
+                objectList.remove(args[0]);
+                String object = joiner.join(objectList);
 
-            p.sendMessage(ChatColor.YELLOW + "You poked " + ChatColor.ITALIC + victim.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
-            victim.sendMessage(ChatColor.YELLOW + "You were poked by " + ChatColor.ITALIC + p.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
+                p.sendMessage(ChatColor.YELLOW + "You poked " + ChatColor.ITALIC + victim.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
+                victim.sendMessage(ChatColor.YELLOW + "You were poked by " + ChatColor.ITALIC + p.getName() + ChatColor.YELLOW + " with " + ChatColor.RED + ChatColor.ITALIC + object + ChatColor.YELLOW + "!");
 
-        } catch(Exception e){
-            sendText(p, wrongPlayer);
-            return true;
+            } catch(Exception e){
+                sendText(p, wrongPlayer);
+                return true;
+            }
+
         }
         return true;
     }
