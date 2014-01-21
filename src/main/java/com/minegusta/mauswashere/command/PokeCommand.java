@@ -27,7 +27,7 @@ public class PokeCommand extends WrappedCommand {
     @Override
     public boolean processCommand(CommandSender s, Command cmd, String[] args) {
         if(cmd.getName().equalsIgnoreCase("poke")){
-            List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:", "/Poke <Name> <object>", "So like: /Poke _Kennon_ A Stinky Fish.");
+            List<String> help = Lists.newArrayList("Wrong arguments! Use it like this:",ChatColor.GRAY + "/Poke <Name> <object>", "So like:" + ChatColor.GRAY + "/Poke _Kennon_ A Stinky Fish.");
             List<String> wrongPlayer = Lists.newArrayList(ChatColor.RED + "Player not found!!");
             Player p = (Player) s;
 
@@ -36,7 +36,7 @@ public class PokeCommand extends WrappedCommand {
                 return true;
             }
             try{
-                Player victim = Bukkit.getOfflinePlayer(args[0]).getPlayer();
+                Player victim = Bukkit.getPlayer(args[0]);
                 Joiner joiner = Joiner.on(" ").skipNulls();
                 List<String> objectList = Lists.newArrayList(args);
                 objectList.remove(args[0]);
@@ -56,9 +56,9 @@ public class PokeCommand extends WrappedCommand {
 
 
     private void sendText(Player p, List<String> l){
-        p.sendMessage(ChatColor.RED + "-------" + ChatColor.GOLD + "Poke" + ChatColor.RED + "-------");
+        p.sendMessage(ChatColor.RED + "------------" + ChatColor.GOLD + "Poke" + ChatColor.RED + "------------");
         for(String s : l){
-            p.sendMessage(ChatColor.YELLOW + s);
+            p.sendMessage(ChatColor.RED + " - " + ChatColor.YELLOW + s);
         }
     }
 }
