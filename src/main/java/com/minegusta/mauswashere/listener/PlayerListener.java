@@ -60,7 +60,7 @@ public class PlayerListener implements Listener {
         MPlayer mPlayer = MPlayer.Util.getPlayer(event.getPlayer());
         mPlayer.setLastLogoutTime(now);
         if (mPlayer.getInPvp())
-            mPlayer.punish("LordKuso", ChatColor.DARK_RED + "LordKuso hath smitten thee for thine acts of logging out during combat.", "sudo " + mPlayer.getPlayerName() + " /cite " + mPlayer.getPlayerName() + "pvp-logging" + "http://minegusta.com/pvp-log-proof.png");
+            mPlayer.punish("", ChatColor.DARK_RED + "", "" + mPlayer.getPlayerName() + "" + mPlayer.getPlayerName() + "" + "");
     }
 
     @EventHandler

@@ -4,6 +4,7 @@ import com.censoredsoftware.helper.WrappedCommand;
 import com.censoredsoftware.util.Messages;
 import com.minegusta.mauswashere.command.*;
 import com.minegusta.mauswashere.data.ThreadManager;
+import com.minegusta.mauswashere.data.VotePointsDataManager;
 import com.minegusta.mauswashere.listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -12,7 +13,7 @@ import org.bukkit.plugin.PluginManager;
 public class MausWasHere {
     // Constants
     public static String SAVE_PATH;
-
+    public static int SAVE_TASK;
     // Public Static Access
     public static final MausPlugin PLUGIN;
 
@@ -26,10 +27,12 @@ public class MausWasHere {
     protected static void load() {
         // Start the data
         SAVE_PATH = PLUGIN.getDataFolder() + "/data/"; // Don't change this.
-
+        //Create points file
+        VotePointsDataManager.createOrLoadPointsFile(PLUGIN);
         // Load listeners
         loadListeners();
         loadCommands();
+        SAVE_TASK = startPointsSave();
 
         // Start threads
         ThreadManager.startThreads();
@@ -67,7 +70,7 @@ public class MausWasHere {
 
     // Commands
     public enum ListedCommand {
-        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), MILK(new MilkCommand()), MUTE(new MuteCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), RENAME(new RenameCommand()), ROLL(new RollCommand()), PARTICLE(new EffectCommand()), POKE(new PokeCommand()),BOX(new MysteryBoxCommand());
+        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), MILK(new MilkCommand()), MUTE(new MuteCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), RENAME(new RenameCommand()), ROLL(new RollCommand()), PARTICLE(new EffectCommand()), POKE(new PokeCommand()),BOX(new VoteRedeemCommand()),VOTE(new VotePointsCommand());
 
         private WrappedCommand command;
 
@@ -78,5 +81,14 @@ public class MausWasHere {
         public WrappedCommand getCommand() {
             return command;
         }
+    }
+
+    public static int startPointsSave(){
+        return Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(PLUGIN, new Runnable() {
+            @Override
+            public void run() {
+                VotePointsDataManager.save();
+            }
+        }, 0, 20 * 300);
     }
 }

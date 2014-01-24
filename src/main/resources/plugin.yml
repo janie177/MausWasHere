@@ -162,6 +162,17 @@ commands:
       usage: /poke <name> <object>
       default: true
       permission-message: In sovjet Minegusta, console poke you!!
+   votepoints:
+      description: Command for voting plugin to give a mystery box.
+      usage: /votepoints <add/reset> <name>
+      default: op
+      permission-message: You cannot use this command! It is console only.
+   vote:
+      description: Point system for voting plugins.
+      usage: /vote
+      aliases: [redeem, reward]
+      default: true
+      permission-message: Redeem vote rewards.
 
 permissions:
    minegusta.hug:
