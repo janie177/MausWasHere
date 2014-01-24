@@ -121,13 +121,13 @@ public class PlayerListener implements Listener {
                     player.getItemInHand().setAmount(newAmount);
                 }
                 Random rand = new Random();
-                int number = rand.nextInt(35);
+                int number = rand.nextInt(55);
                 ItemStack itemReward = new ItemStack(Material.ARROW, 1);
 
                 switch (number) {
 
                     case 1:
-                        itemReward = new ItemStack(Material.DIAMOND, 3);
+                        itemReward = new ItemStack(Material.DIAMOND, 2);
                         break;
                     case 2:
                         itemReward = new ItemStack(Material.DIRT, 3);
@@ -172,7 +172,7 @@ public class PlayerListener implements Listener {
                         itemReward = new ItemStack(Material.STONE, 25);
                         break;
                     case 16:
-                        itemReward = new ItemStack(Material.COOKIE, 64);
+                        itemReward = new ItemStack(Material.COOKIE, 20);
                         break;
                     case 17:
                         itemReward = new ItemStack(Material.REDSTONE, 64);
@@ -227,6 +227,69 @@ public class PlayerListener implements Listener {
                         break;
                     case 34:
                         itemReward = new ItemStack(Material.ARROW, 25);
+                        break;
+                    case 35:
+                        itemReward = new ItemStack(Material.CACTUS, 1);
+                        break;
+                    case 36:
+                        itemReward = new ItemStack(Material.WATCH, 1);
+                        break;
+                    case 37:
+                        itemReward = new ItemStack(Material.CACTUS, 1);
+                        break;
+                    case 38:
+                        itemReward = new ItemStack(Material.SNOW, 1);
+                        break;
+                    case 39:
+                        itemReward = new ItemStack(Material.RECORD_8, 1);
+                        break;
+                    case 40:
+                        itemReward = new ItemStack(Material.LEATHER, 1);
+                        break;
+                    case 41:
+                        itemReward = new ItemStack(Material.COBBLESTONE, 1);
+                        break;
+                    case 42:
+                        itemReward = new ItemStack(Material.COBBLE_WALL, 1);
+                        break;
+                    case 43:
+                        itemReward = new ItemStack(Material.COAL_BLOCK, 1);
+                        break;
+                    case 44:
+                        itemReward = new ItemStack(Material.MOSSY_COBBLESTONE, 1);
+                        break;
+                    case 45:
+                        itemReward = new ItemStack(Material.SAND, 1);
+                        break;
+                    case 46:
+                        itemReward = new ItemStack(Material.MAGMA_CREAM, 1);
+                        break;
+                    case 47:
+                        itemReward = new ItemStack(Material.MAP, 1);
+                        break;
+                    case 48:
+                        itemReward = new ItemStack(Material.MINECART, 1);
+                        break;
+                    case 49:
+                        itemReward = new ItemStack(Material.WOOD, 1);
+                        break;
+                    case 50:
+                        itemReward = new ItemStack(Material.WOOD_SWORD, 1);
+                        break;
+                    case 51:
+                        itemReward = new ItemStack(Material.WOOD_AXE, 1);
+                        break;
+                    case 52:
+                        itemReward = new ItemStack(Material.CARROT, 1);
+                        break;
+                    case 53:
+                        itemReward = new ItemStack(Material.FISHING_ROD, 1);
+                        break;
+                    case 54:
+                        itemReward = new ItemStack(Material.FLINT, 1);
+                        break;
+                    case 55:
+                        itemReward = new ItemStack(Material.FLINT_AND_STEEL, 1);
                         break;
                 }
                 player.getInventory().addItem(itemReward);
