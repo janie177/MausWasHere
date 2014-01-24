@@ -173,6 +173,12 @@ commands:
       aliases: [redeem, reward]
       default: true
       permission-message: Redeem vote rewards.
+   color:
+      description: Show color codes.
+      usage: /color
+      aliases: [colors, colorcodes]
+      default: true
+      permission-message: You can't use this somehow.
 
 permissions:
    minegusta.hug:

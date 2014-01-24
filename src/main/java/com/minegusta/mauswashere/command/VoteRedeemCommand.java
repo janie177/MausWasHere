@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -54,7 +55,7 @@ public class VoteRedeemCommand extends WrappedCommand {
         ItemStack box = new ItemStack(Material.CHEST, 1);
 
         ItemMeta meta = box.getItemMeta();
-        List<String> lore = meta.getLore();
+        ArrayList<String> lore = new ArrayList<String>();
         lore.add("Rightclick the air to open!");
         meta.setLore(lore);
         meta.setDisplayName(ChatColor.GOLD + "Mystery Box");

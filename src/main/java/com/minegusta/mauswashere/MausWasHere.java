@@ -70,7 +70,7 @@ public class MausWasHere {
 
     // Commands
     public enum ListedCommand {
-        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), MILK(new MilkCommand()), MUTE(new MuteCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), RENAME(new RenameCommand()), ROLL(new RollCommand()), PARTICLE(new EffectCommand()), POKE(new PokeCommand()),BOX(new VoteRedeemCommand()),VOTE(new VotePointsCommand());
+        DISCO(new DiscoCommand()), EGG(new EggCommand()), EXPLODE(new ExplodeCommand()), FART(new FartCommand()), HIGH_FIVE(new HighFiveCommand()), HUG(new HugCommand()), KISS(new KissCommand()), MILK(new MilkCommand()), MUTE(new MuteCommand()), NINJA(new NinjaCommand()), NUKE_ARROW(new NukeArrowCommand()), NUKE(new NukeCommand()), POP(new PopCommand()), POTION(new PotionCommands()), RENAME(new RenameCommand()), ROLL(new RollCommand()), PARTICLE(new EffectCommand()), POKE(new PokeCommand()),BOX(new VoteRedeemCommand()),VOTE(new VotePointsCommand()),COLOR(new ColorCommand());
 
         private WrappedCommand command;
 
