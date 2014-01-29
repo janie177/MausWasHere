@@ -8,16 +8,18 @@ public class RainBowStringMaker {
         StringBuilder builder = new StringBuilder(s);
         if(s.length() == 0)return s;
 
-        ChatColor[] color = {ChatColor.DARK_RED, ChatColor.RED, ChatColor.GOLD, ChatColor.YELLOW, ChatColor.GREEN, ChatColor.DARK_GREEN, ChatColor.AQUA, ChatColor.DARK_AQUA, ChatColor.BLUE, ChatColor.DARK_BLUE, ChatColor.DARK_PURPLE, ChatColor.LIGHT_PURPLE};
+        String[] color = {"&4", "&c", "&6", "&e", "&a", "&2", "&b", "&3", "&9", "&1", "&5", "&d"};
         int place = 0;
-        for(int index = 0; index < s.length(); index++){
+        for(int index = 0; index < s.length()*3; index+=3){
             builder.insert(index, color[place]);
             place = place +1;
             if(place == 11){
                 place = 0;
             }
         }
-        return builder.toString();
+        String send = builder.toString();
+        send = ChatColor.translateAlternateColorCodes('&', send);
+        return send;
     }
 
 }

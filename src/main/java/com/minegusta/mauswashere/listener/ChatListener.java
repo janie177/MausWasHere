@@ -14,16 +14,17 @@ public class ChatListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onChat(AsyncPlayerChatEvent e) {
         String p = e.getPlayer().getName();
+        String m = e.getMessage();
         if (MuteCommand.mutedMap.containsKey(p) && MuteCommand.mutedMap.get(p)) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.RED + "You are muted. This will be undone when a moderator undoes it or at a server reboot. (9AM GMT).");
             e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
         }
 
-        else if(e.getMessage().contains("&!")){
-            String[] split = e.getMessage().split("&!");
-            String toColor = split[1];
-            e.setMessage(e.getMessage().replace("&!" + split[1], RainBowStringMaker.rainbowify(toColor)));
+        else if(m.contains("&!") && e.getPlayer().hasPermission("minegusta.donator")){
+            try {
+            e.setMessage(RainBowStringMaker.rainbowify(m.replace("&!", "")));
+            } catch(Exception ignored){}
         }
         //Block nick from talking. Also the password.
         if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14")) {

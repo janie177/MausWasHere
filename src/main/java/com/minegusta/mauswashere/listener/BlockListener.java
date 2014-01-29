@@ -40,25 +40,25 @@ public class BlockListener implements Listener {
         if (event.getLine(0) != null) {
             event.setLine(0, ChatColor.translateAlternateColorCodes('&', text1));
             if(text1.contains("&!")){
-                event.setLine(0, RainBowStringMaker.rainbowify(text1));
+                event.setLine(0, RainBowStringMaker.rainbowify(text1.replace("&!", "")));
             }
         }
         if (event.getLine(1) != null) {
             event.setLine(1, ChatColor.translateAlternateColorCodes('&', text2));
             if(text2.contains("&!")){
-                event.setLine(1, RainBowStringMaker.rainbowify(text2));
+                event.setLine(1, RainBowStringMaker.rainbowify(text2.replace("&!", "")));
             }
         }
         if (event.getLine(2) != null) {
             event.setLine(2, ChatColor.translateAlternateColorCodes('&', text3));
             if(text3.contains("&!")){
-                event.setLine(2, RainBowStringMaker.rainbowify(text3));
+                event.setLine(2, RainBowStringMaker.rainbowify(text3.replace("&!", "")));
             }
         }
         if (event.getLine(3) != null) {
             event.setLine(3, ChatColor.translateAlternateColorCodes('&', text4));
             if(text4.contains("&!")){
-                event.setLine(3, RainBowStringMaker.rainbowify(text4));
+                event.setLine(3, RainBowStringMaker.rainbowify(text4.replace("&!", "")));
             }
         }
     }
@@ -188,7 +188,7 @@ public class BlockListener implements Listener {
                         .setZ(-1).setX(0));
             }
 
-            if (l.getRelative(BlockFace.EAST, 1).getType().equals(Material.IRON_BLOCK) || !l.getRelative(BlockFace.EAST, 2).getType().equals(
+            if (l.getRelative(BlockFace.EAST, 1).getType().equals(Material.IRON_BLOCK) && !l.getRelative(BlockFace.EAST, 2).getType().equals(
                     Material.IRON_BLOCK) && l.getRelative(BlockFace.EAST).getRelative(BlockFace.UP).getType()
                     .equals(Material.REDSTONE_TORCH_ON)) {
                 Location barrel = e.getClickedBlock()
