@@ -29,6 +29,17 @@ public class ChatListener implements Listener {
                 e.setCancelled(true);
             }
         }
+        else if(e.getPlayer().getName().equalsIgnoreCase("Nablu")){
+            String send = e.getMessage();
+            send = send.toLowerCase();
+            send = send.replace("fuck", "potato");
+            send = send.replace("cunt", "cookie");
+            send = send.replace("dick", "flopper");
+            send = send.replace("pussy", "fishtank");
+            send = send.replace("penis", "cupcake");
+            send = send.substring(0, 1).toUpperCase();
+            e.setMessage(send);
+        }
     }
 
     @EventHandler
