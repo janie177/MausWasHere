@@ -175,10 +175,8 @@ public class BlockListener implements Listener {
                         .setZ(-1).setX(0));
             }
 
-            if (!l.getRelative(BlockFace.EAST, 1).getType().equals(Material.IRON_BLOCK) || !l.getRelative(BlockFace.EAST, 2).getType().equals(
-                    Material.IRON_BLOCK)) return;
-
-            if (l.getRelative(BlockFace.EAST).getRelative(BlockFace.UP).getType()
+            if (l.getRelative(BlockFace.EAST, 1).getType().equals(Material.IRON_BLOCK) || !l.getRelative(BlockFace.EAST, 2).getType().equals(
+                    Material.IRON_BLOCK) && l.getRelative(BlockFace.EAST).getRelative(BlockFace.UP).getType()
                     .equals(Material.REDSTONE_TORCH_ON)) {
                 Location barrel = e.getClickedBlock()
                         .getRelative(BlockFace.EAST, 2).getLocation();
