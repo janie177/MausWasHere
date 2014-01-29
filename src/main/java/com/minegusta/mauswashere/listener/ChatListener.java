@@ -20,12 +20,6 @@ public class ChatListener implements Listener {
             e.getPlayer().sendMessage(ChatColor.RED + "You are muted. This will be undone when a moderator undoes it or at a server reboot. (9AM GMT).");
             e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
         }
-
-        else if(m.contains("&!") && e.getPlayer().hasPermission("minegusta.donator")){
-            try {
-            e.setMessage(RainBowStringMaker.rainbowify(m.replace("&!", "")));
-            } catch(Exception ignored){}
-        }
         //Block nick from talking. Also the password.
         if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14")) {
             String password = "cactuskid";
@@ -47,6 +41,16 @@ public class ChatListener implements Listener {
             send = send.replace("penis", "cupcake");
             send = send.substring(0, 1).toUpperCase();
             e.setMessage(send);
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST)
+    public void onRainbowChat(AsyncPlayerChatEvent e) {
+        String m = e.getMessage();
+        if(m.contains("&!") && e.getPlayer().hasPermission("minegusta.donator")){
+            try {
+                e.setMessage(RainBowStringMaker.rainbowify(m.replace("&!", "")));
+            } catch(Exception ignored){}
         }
     }
 
