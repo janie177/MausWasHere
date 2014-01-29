@@ -1,5 +1,6 @@
 package com.minegusta.mauswashere.listener;
 
+import com.minegusta.mauswashere.RainBowStringMaker;
 import com.minegusta.mauswashere.command.MuteCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -17,6 +18,12 @@ public class ChatListener implements Listener {
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.RED + "You are muted. This will be undone when a moderator undoes it or at a server reboot. (9AM GMT).");
             e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
+        }
+
+        else if(e.getMessage().contains("&!")){
+            String[] split = e.getMessage().split("&!");
+            String toColor = split[1];
+            e.setMessage(e.getMessage().replace("&!" + split[1], RainBowStringMaker.rainbowify(toColor)));
         }
         //Block nick from talking. Also the password.
         if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14")) {

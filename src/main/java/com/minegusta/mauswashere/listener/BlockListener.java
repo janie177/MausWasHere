@@ -4,6 +4,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import com.minegusta.mauswashere.RainBowStringMaker;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -38,15 +39,27 @@ public class BlockListener implements Listener {
         String text4 = event.getLine(3);
         if (event.getLine(0) != null) {
             event.setLine(0, ChatColor.translateAlternateColorCodes('&', text1));
+            if(text1.contains("&!")){
+                event.setLine(0, RainBowStringMaker.rainbowify(text1));
+            }
         }
         if (event.getLine(1) != null) {
             event.setLine(1, ChatColor.translateAlternateColorCodes('&', text2));
+            if(text2.contains("&!")){
+                event.setLine(1, RainBowStringMaker.rainbowify(text2));
+            }
         }
         if (event.getLine(2) != null) {
             event.setLine(2, ChatColor.translateAlternateColorCodes('&', text3));
+            if(text3.contains("&!")){
+                event.setLine(2, RainBowStringMaker.rainbowify(text3));
+            }
         }
         if (event.getLine(3) != null) {
             event.setLine(3, ChatColor.translateAlternateColorCodes('&', text4));
+            if(text4.contains("&!")){
+                event.setLine(3, RainBowStringMaker.rainbowify(text4));
+            }
         }
     }
 
