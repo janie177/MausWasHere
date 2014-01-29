@@ -44,7 +44,7 @@ public class ChatListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onRainbowChat(AsyncPlayerChatEvent e) {
         String m = e.getMessage();
         if(m.contains("&!") && e.getPlayer().hasPermission("minegusta.donator")){
