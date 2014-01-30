@@ -78,18 +78,6 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onCombatTag(EntityDamageByEntityEvent e) {
-        if (e.getEntityType().equals(EntityType.PLAYER) && e.getDamager().getType().equals(EntityType.PLAYER) && !e.isCancelled()) {
-            MPlayer player = MPlayer.Util.getPlayer((Player) e.getEntity());
-            MPlayer damager = MPlayer.Util.getPlayer((Player) e.getDamager());
-            if (!player.getInPvp()) alertPlayerCombatStatus(e.getEntity());
-            if (!damager.getInPvp()) alertPlayerCombatStatus(e.getDamager());
-            player.setInPvp(PVPLOG_SECONDS);
-            damager.setInPvp(PVPLOG_SECONDS);
-        }
-    }
-
     //Cancel placing Mystery Boxes
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -299,13 +287,5 @@ public class PlayerListener implements Listener {
 
             }
         }
-    }
-
-
-    private void alertPlayerCombatStatus(Entity entity) {
-        assert (entity instanceof Player);
-        Player player = (Player) entity;
-        for (String line : PVPLOG_ENTER_BATTLE_MESSAGE)
-            player.sendMessage(line);
     }
 }

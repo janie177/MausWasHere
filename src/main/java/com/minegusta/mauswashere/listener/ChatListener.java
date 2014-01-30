@@ -39,6 +39,9 @@ public class ChatListener implements Listener {
             send = send.replace("dick", "flopper");
             send = send.replace("pussy", "fishtank");
             send = send.replace("penis", "cupcake");
+            send = send.replace("nipple", "salad");
+            send = send.replace("boob", "peacock");
+            send = send.replace("cock", "Walt Disney");
             send = send.substring(0, 1).toUpperCase();
             e.setMessage(send);
         }
