@@ -229,3 +229,6 @@ permissions:
    minegusta.particle:
      description: Particles
      default: op
+   minegusta.donator:
+     description: Is a player a donator?
+     default: op
