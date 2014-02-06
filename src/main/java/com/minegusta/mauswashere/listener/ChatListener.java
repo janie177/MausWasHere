@@ -31,19 +31,6 @@ public class ChatListener implements Listener {
                 e.setCancelled(true);
             }
         }
-        else if(e.getPlayer().getName().equalsIgnoreCase("_Kennon_")){
-            String send = e.getMessage();
-            send = send.toLowerCase().replace("rylie", "potato");
-            send = send.toLowerCase().replace("tim", "that guy better than my dad");
-            send = send.toLowerCase().replace("jason", "hopper");
-            send = send.toLowerCase().replace("soccer", "borderless person");
-            send = send.toLowerCase().replace("alpha", "black kid");
-            send = send.toLowerCase().replace("lol", "-giggling inside-");
-            send = send.toLowerCase().replace("dick", "floppy wiener");
-            send = send.toLowerCase().replace("sem", "FishFetus");
-            send = send.toLowerCase().replace("brb", "I have to go! I will soon be back my friends!!");
-            e.setMessage(send);
-        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
