@@ -104,7 +104,7 @@ public class PlayerListener implements Listener {
                     return;
                 }
                 if (newAmount == 0) {
-                    player.getInventory().remove(player.getItemInHand());
+                    player.getInventory().removeItem(player.getItemInHand());
                 } else {
                     player.getItemInHand().setAmount(newAmount);
                 }
@@ -217,7 +217,7 @@ public class PlayerListener implements Listener {
                         itemReward = new ItemStack(Material.ARROW, 25);
                         break;
                     case 35:
-                        itemReward = new ItemStack(Material.CACTUS, 1);
+                        itemReward = new ItemStack(Material.IRON_ORE, 10);
                         break;
                     case 36:
                         itemReward = new ItemStack(Material.WATCH, 1);
@@ -247,7 +247,7 @@ public class PlayerListener implements Listener {
                         itemReward = new ItemStack(Material.MOSSY_COBBLESTONE, 1);
                         break;
                     case 45:
-                        itemReward = new ItemStack(Material.SAND, 1);
+                        itemReward = new ItemStack(Material.DIAMOND, 3);
                         break;
                     case 46:
                         itemReward = new ItemStack(Material.MAGMA_CREAM, 1);
