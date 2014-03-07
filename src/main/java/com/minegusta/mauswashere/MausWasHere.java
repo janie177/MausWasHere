@@ -37,9 +37,6 @@ public class MausWasHere {
         loadCommands();
         SAVE_TASK = startPointsSave();
 
-        //Unregister old scoreboard
-        unregisterOldScoreboard();
-
         // Start threads
         ThreadManager.startThreads();
     }
@@ -96,22 +93,5 @@ public class MausWasHere {
                 VotePointsDataManager.save();
             }
         }, 0, 20 * 300);
-    }
-    public static void unregisterOldScoreboard(){
-
-        ScoreboardManager manager = Bukkit.getScoreboardManager();
-
-        try{
-        Objective objective = manager.getNewScoreboard().getObjective("Your Data: ");
-        objective.unregister();
-        } catch(Exception ingore){
-            Bukkit.getLogger().info("Objectives from old scoreboard could not be removed from a new scoreboard.");
-        }
-        try{
-            Objective objective = manager.getMainScoreboard().getObjective("Your Data: ");
-            objective.unregister();
-        } catch(Exception e){
-            Bukkit.getLogger().info("Could not unregister old scoreboard from the main scoreboard.");
-        }
     }
 }
