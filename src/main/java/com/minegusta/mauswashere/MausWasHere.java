@@ -9,6 +9,9 @@ import com.minegusta.mauswashere.listener.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.ScoreboardManager;
 
 public class MausWasHere {
     // Constants
@@ -33,6 +36,9 @@ public class MausWasHere {
         loadListeners();
         loadCommands();
         SAVE_TASK = startPointsSave();
+
+        //Unregister old scoreboard
+        unregisterOldScoreboard();
 
         // Start threads
         ThreadManager.startThreads();
@@ -90,5 +96,13 @@ public class MausWasHere {
                 VotePointsDataManager.save();
             }
         }, 0, 20 * 300);
+    }
+    public static void unregisterOldScoreboard(){
+
+        ScoreboardManager manager = Bukkit.getScoreboardManager();
+        if(manager.getMainScoreboard().getObjective("Your Data") != null){
+            Objective objective = manager.getMainScoreboard().getObjective("Your Data");
+            objective.unregister();
+        }
     }
 }
