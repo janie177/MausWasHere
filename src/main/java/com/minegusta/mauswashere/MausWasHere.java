@@ -100,9 +100,18 @@ public class MausWasHere {
     public static void unregisterOldScoreboard(){
 
         ScoreboardManager manager = Bukkit.getScoreboardManager();
-        if(manager.getMainScoreboard().getObjective("Your Data") != null){
-            Objective objective = manager.getMainScoreboard().getObjective("Your Data");
+
+        try{
+        Objective objective = manager.getNewScoreboard().getObjective("Your Data: ");
+        objective.unregister();
+        } catch(Exception ingore){
+            Bukkit.getLogger().info("Objectives from old scoreboard could not be removed from a new scoreboard.");
+        }
+        try{
+            Objective objective = manager.getMainScoreboard().getObjective("Your Data: ");
             objective.unregister();
+        } catch(Exception e){
+            Bukkit.getLogger().info("Could not unregister old scoreboard from the main scoreboard.");
         }
     }
 }
