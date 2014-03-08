@@ -35,7 +35,7 @@ public class EffectCommand extends WrappedCommand {
 
             String logo = ChatColor.DARK_RED + "[" + ChatColor.RED + "MineGusta Particles" + ChatColor.DARK_RED + "]";
             String header = ChatColor.AQUA + "=================================================";
-            String list = ChatColor.BLUE + "/Particle Flames/Smoke/Hearts/Ender/Rainbow/Off";
+            String list = ChatColor.BLUE + "/Particle Flames/Smoke/Hearts/Ender/Rainbow/Snow";
             String list2 = ChatColor.BLUE + "/Particle Magic/Green/Cloud/Note/Glyph/Portal/Off";
 
             if (args.length == 0) {
@@ -72,6 +72,8 @@ public class EffectCommand extends WrappedCommand {
                     currentEffect.put(sender.getName(), Effect.FLYING_GLYPH);
                 } else if (whichEffect.equalsIgnoreCase("portal")) {
                     currentEffect.put(sender.getName(), Effect.PORTAL);
+                } else if (whichEffect.equalsIgnoreCase("snow")) {
+                    currentEffect.put(sender.getName(), Effect.SNOWBALL_BREAK);
 
                 } else if (whichEffect.equalsIgnoreCase("off")) {
                     currentEffect.remove(sender.getName());
