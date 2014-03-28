@@ -38,7 +38,7 @@ public class VoteRedeemCommand extends WrappedCommand {
                 return true;
             }
             else if(!(VotePointsDataManager.getPlayerVotes(p.getUniqueId()) > 0)){
-                p.sendMessage(ChatColor.DARK_RED + "You did not vote!" + ChatColor.YELLOW + " http://www.minegusta.com/Vote.html");
+                p.sendMessage(ChatColor.DARK_RED + "You did not vote!" + ChatColor.YELLOW + " http://www.minegusta.com/vote.html");
                 return true;
             }
             else{

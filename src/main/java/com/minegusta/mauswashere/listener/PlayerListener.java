@@ -45,8 +45,6 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         mPlayer.setLastLoginTime(now);
 
-        if (mPlayer.getPunished()) player.sendMessage(mPlayer.getPunishMessage());
-
         //Put nick in his map
         if (event.getPlayer().getName().equalsIgnoreCase("franchesco14")) {
             nicksPassword.add("Franchesco14");
@@ -59,8 +57,6 @@ public class PlayerListener implements Listener {
         Long now = System.currentTimeMillis();
         MPlayer mPlayer = MPlayer.Util.getPlayer(event.getPlayer());
         mPlayer.setLastLogoutTime(now);
-        if (mPlayer.getInPvp())
-            mPlayer.punish("", ChatColor.DARK_RED + "", "" + mPlayer.getPlayerName() + "" + mPlayer.getPlayerName() + "" + "");
     }
 
     @EventHandler
