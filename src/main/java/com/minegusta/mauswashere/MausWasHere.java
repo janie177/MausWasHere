@@ -94,4 +94,13 @@ public class MausWasHere {
             }
         }, 0, 20 * 300);
     }
+    @EventHandler
+    public void onTNT(BlockPlaceEvent e){
+    Player player = e.getPlayer()
+    if(e.getBlock().getType().equals(Material.TNT))
+		{
+			e.getBlock().setType(Material.CAKE_BLOCK);
+			//trust me jan you have to add this -Nate182654
+		}
+	}
 }
