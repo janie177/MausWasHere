@@ -60,7 +60,7 @@ public class RapeCommand extends WrappedCommand
 					p.getWorld().spigot().playEffect(p.getLocation(), Effect.HEART, 0, 0, 1, 1, 1, 1, 25, 25);
 
 					if(violentCheck(args))p.damage(0.0);
-					if(sTDCheck(args))sTDGenerator(p);
+					if(sTDCheck(args))sTDGenerator(victim);
 
 
 				}
