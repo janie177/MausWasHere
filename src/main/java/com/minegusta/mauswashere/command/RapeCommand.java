@@ -49,10 +49,10 @@ public class RapeCommand extends WrappedCommand
 				}
 				else if(args.length > 0)
 				{
-					Player victim = Bukkit.getOfflinePlayer(args[0]).getPlayer();
+					Player victim = Bukkit.getPlayer(args[0]);
 
-					sendText(victim, "You have been raped by " + ChatColor.RED + p.getCustomName() + ChatColor.YELLOW + "!");
-				    sendText(p, "You raped " + ChatColor.RED + victim.getCustomName() + ChatColor.YELLOW + "!");
+					sendText(victim, "You have been raped by " + ChatColor.RED + p.getName() + ChatColor.YELLOW + "!");
+				    sendText(p, "You raped " + ChatColor.RED + victim.getName() + ChatColor.YELLOW + "!");
 
 					sendSound(p, Sound.SLIME_WALK);
 					sendSound(p, Sound.SLIME_WALK2);
