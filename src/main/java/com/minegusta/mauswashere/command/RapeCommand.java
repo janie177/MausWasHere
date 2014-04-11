@@ -54,8 +54,8 @@ public class RapeCommand extends WrappedCommand
 					sendText(victim, "You have been raped by " + ChatColor.RED + p.getName() + ChatColor.YELLOW + "!");
 				    sendText(p, "You raped " + ChatColor.RED + victim.getName() + ChatColor.YELLOW + "!");
 
-					sendSound(p, Sound.SLIME_WALK);
-					sendSound(p, Sound.SLIME_WALK2);
+					sendSound(victim, Sound.SLIME_WALK);
+					sendSound(victim, Sound.SLIME_WALK2);
 
 					p.getWorld().spigot().playEffect(p.getLocation(), Effect.HEART, 0, 0, 1, 1, 1, 1, 25, 25);
 
