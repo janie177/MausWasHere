@@ -32,6 +32,11 @@ commands:
       usage: /roll
       permission: minegusta.roll
       permission-message: You don't have permission to use this. Now die in a corner.
+   rape:
+      description: Rape someone. -s for STD's. -v for violent.
+      usage: /Rape <name> [-s] [-v]
+      permission: minegusta.rape
+      permission-message: You don't have permission to use this. Now die in a corner.
    nuke:
       description: Kim-Jong-un style.
       usage: /nuke player
@@ -228,6 +233,9 @@ permissions:
      default: op
    minegusta.particle:
      description: Particles
+     default: op
+   minegusta.rape:
+     description: raaaaaaaaaape whistle
      default: op
    minegusta.donator:
      description: Is a player a donator?
