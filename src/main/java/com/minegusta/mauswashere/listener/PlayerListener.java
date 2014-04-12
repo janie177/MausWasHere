@@ -37,7 +37,8 @@ public class PlayerListener implements Listener {
         // Define variables
         Player player = event.getPlayer();
         MPlayer mPlayer = MPlayer.Util.getPlayer(player);
-
+	    player.setMaxHealth(30.0);
+	    player.setHealthScale(30.0);
         // First join
         if (mPlayer == null) mPlayer = MPlayer.Util.create(player);
 
