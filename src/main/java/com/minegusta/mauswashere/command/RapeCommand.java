@@ -57,7 +57,7 @@ public class RapeCommand extends WrappedCommand
 					sendSound(victim, Sound.SLIME_WALK);
 					sendSound(victim, Sound.SLIME_WALK2);
 
-					p.getWorld().spigot().playEffect(p.getLocation(), Effect.HEART, 0, 0, 1, 1, 1, 1, 25, 25);
+					victim.getWorld().spigot().playEffect(victim.getLocation(), Effect.HEART, 0, 0, 1, 1, 1, 1, 25, 25);
 
 					if(violentCheck(args))p.damage(0.0);
 					if(sTDCheck(args))sTDGenerator(victim);
