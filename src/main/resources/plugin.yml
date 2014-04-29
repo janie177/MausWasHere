@@ -184,6 +184,12 @@ commands:
       aliases: [colors, colorcodes]
       default: true
       permission-message: You can't use this somehow.
+   hail:
+      description: Hail Plankton!
+      usage: /Hail <something>
+      aliases: [heil, obey]
+      default: false
+      permission-message: You cannot use this. Go be a nazi somewhere else.
 
 permissions:
    minegusta.hug:

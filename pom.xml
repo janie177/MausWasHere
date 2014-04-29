@@ -6,7 +6,7 @@
 
     <groupId>com.minegusta</groupId>
     <artifactId>MausWasHere</artifactId>
-    <version>1.5.2</version>
+    <version>1.5.3</version>
     <packaging>jar</packaging>
 
     <name>MausWasHere</name>
@@ -24,7 +24,7 @@
 
     <properties> <!-- It is important to keep up to date manually. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spigot.version>1.7.5-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.7.9-R0.1-SNAPSHOT</spigot.version>
         <worldguard.version>5.8.2-SNAPSHOT</worldguard.version>
     </properties>
 
