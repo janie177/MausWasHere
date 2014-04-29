@@ -32,7 +32,7 @@ public class HailCommand extends WrappedCommand
 			}
 			for(Player p : Bukkit.getOnlinePlayers())
 			{
-				p.chat(ChatColor.RED + "ALL HAIL " + ChatColor.YELLOW + hail + ChatColor.RED + "!");
+				p.chat(ChatColor.RED + "ALL HAIL" + ChatColor.YELLOW + hail + ChatColor.RED + "!");
 			}
 			return true;
 		}
