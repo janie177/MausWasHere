@@ -92,7 +92,7 @@ public class PlayerListener implements Listener {
     public void onMysteryBoxOpen(PlayerInteractEvent e) {
         Player player = e.getPlayer();
         //Sign commands
-        if(e.hasBlock() && e.getAction().equals(Action.LEFT_CLICK_BLOCK))
+        if(e.hasBlock() && (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)))
         {
             if (e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.WALL_SIGN) || e.getClickedBlock().getType().equals(Material.SIGN_POST))
             {
