@@ -20,17 +20,6 @@ public class ChatListener implements Listener {
             e.getPlayer().sendMessage(ChatColor.RED + "You are muted. This will be undone when a moderator undoes it or at a server reboot. (9AM GMT).");
             e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
         }
-        //Block nick from talking. Also the password.
-        if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14")) {
-            String password = "cactuskid";
-            if (!PlayerListener.nicksPassword.isEmpty() && !e.getMessage().equalsIgnoreCase(password)) {
-                e.setCancelled(true);
-            } else if (e.getMessage().equalsIgnoreCase(password)) {
-                PlayerListener.nicksPassword.remove("Franchesco14");
-                e.getPlayer().sendMessage(ChatColor.GREEN + "Welcome back Mr prick.");
-                e.setCancelled(true);
-            }
-        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)

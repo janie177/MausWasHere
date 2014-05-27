@@ -7,6 +7,7 @@ import com.minegusta.mauswashere.player.MPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Material;
+import org.bukkit.block.Sign;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -90,6 +91,21 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onMysteryBoxOpen(PlayerInteractEvent e) {
         Player player = e.getPlayer();
+        //Sign commands
+        if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.WALL_SIGN)) || e.getClickedBlock().getType().equals(Material.SIGN_POST))
+        {
+            Sign sign = (Sign) e.getClickedBlock();
+            if(sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Command]") && sign.getLine(2) != null)
+            {
+                player.chat("/" + sign.getLine(3));
+            }
+            if(sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "[Kit]") && sign.getLine(2) != null)
+            {
+                player.chat("/kit " + sign.getLine(3));
+            }
+        }
+
+        //Mystery boxes
         if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && player.getItemInHand().getType().equals(Material.CHEST)) {
             if (!player.getItemInHand().getItemMeta().hasLore()) return;
             if (player.getItemInHand().getItemMeta().getLore().toString().contains("Rightclick the air to open!")) {

@@ -61,6 +61,15 @@ public class BlockListener implements Listener {
                 event.setLine(3, RainBowStringMaker.rainbowify(text4.replace("&!", "")));
             }
         }
+        if (text2 != null && (text2.equalsIgnoreCase("[command]") || text2.equalsIgnoreCase("[cmd]")))
+        {
+            event.setLine(1, ChatColor.RED + "[Command]");
+        }
+
+        if(text2 != null && text2.equalsIgnoreCase("[kit]"))
+        {
+            event.setLine(1, ChatColor.GREEN + "[Kit]");
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -115,13 +124,6 @@ public class BlockListener implements Listener {
 
                 }
             }
-        }
-
-
-        //Block Nick from breaking.
-
-        if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !PlayerListener.nicksPassword.isEmpty()) {
-            e.setCancelled(true);
         }
     }
 
