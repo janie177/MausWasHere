@@ -94,7 +94,8 @@ public class PlayerListener implements Listener {
         //Sign commands
         if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.WALL_SIGN)) || e.getClickedBlock().getType().equals(Material.SIGN_POST))
         {
-            Sign sign = (Sign) e.getClickedBlock();
+            if(!(e.getClickedBlock().getState() instanceof Sign))return;
+            Sign sign = (Sign) e.getClickedBlock().getState();
             if(sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Command]") && sign.getLine(2) != null)
             {
                 player.chat("/" + sign.getLine(3));
