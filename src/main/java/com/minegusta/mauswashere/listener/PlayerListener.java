@@ -92,17 +92,18 @@ public class PlayerListener implements Listener {
     public void onMysteryBoxOpen(PlayerInteractEvent e) {
         Player player = e.getPlayer();
         //Sign commands
-        if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && (e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.WALL_SIGN)) || e.getClickedBlock().getType().equals(Material.SIGN_POST))
+        if(e.hasBlock() && e.getAction().equals(Action.LEFT_CLICK_BLOCK))
         {
-            if(!(e.getClickedBlock().getState() instanceof Sign))return;
-            Sign sign = (Sign) e.getClickedBlock().getState();
-            if(sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Command]") && sign.getLine(2) != null)
+            if (e.getClickedBlock().getType().equals(Material.SIGN) || e.getClickedBlock().getType().equals(Material.WALL_SIGN) || e.getClickedBlock().getType().equals(Material.SIGN_POST))
             {
-                player.chat("/" + sign.getLine(3));
-            }
-            if(sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "[Kit]") && sign.getLine(2) != null)
-            {
-                player.chat("/kit " + sign.getLine(3));
+                if (!(e.getClickedBlock().getState() instanceof Sign)) return;
+                Sign sign = (Sign) e.getClickedBlock().getState();
+                if (sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Command]") && sign.getLine(2) != null) {
+                    player.chat("/" + sign.getLine(2));
+                }
+                if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "[Kit]") && sign.getLine(2) != null) {
+                    player.chat("/kit " + sign.getLine(2));
+                }
             }
         }
 
