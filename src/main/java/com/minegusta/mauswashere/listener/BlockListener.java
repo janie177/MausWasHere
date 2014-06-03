@@ -290,10 +290,12 @@ public class BlockListener implements Listener {
             if (block.getType().equals(Material.LAPIS_BLOCK)) {
                 player.getWorld().playSound(player.getLocation(),
                         Sound.GHAST_FIREBALL, 1.0F, 1.0F);
+                player.teleport(player.getLocation().add(0, 0.5, 0));
+                player.playEffect(player.getLocation(), Effect.SMOKE, 0);
                 Vector v = player.getLocation().getDirection();
                 v.multiply(2.2);
-                player.teleport(player.getLocation().add(0, 0.5, 0));
                 player.setVelocity(v);
+                player.setVelocity(new Vector(player.getVelocity().getX(), 1.0D, player.getVelocity().getZ()));
                 noFallDamage.add(player.getName());
             }
         }
