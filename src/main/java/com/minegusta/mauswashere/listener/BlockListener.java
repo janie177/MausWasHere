@@ -154,12 +154,6 @@ public class BlockListener implements Listener {
                 }
             }
         }
-
-        //Stop Nick from wrecking blawks.
-
-        if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !PlayerListener.nicksPassword.isEmpty()) {
-            e.setCancelled(true);
-        }
     }
 
     //Cannons
@@ -291,22 +285,14 @@ public class BlockListener implements Listener {
     public void onPressurePress(PlayerInteractEvent e) {
         Player player = e.getPlayer();
         if ((e.getAction() == Action.PHYSICAL) &&
-                (e.getClickedBlock().getType() == Material.STONE_PLATE))
-            try {
-                Block block = e.getClickedBlock().getRelative(BlockFace.DOWN);
-                if (block.getType().equals(Material.LAPIS_BLOCK)) {
-                    rocketPlayer(player);
-                    for (Entity nearby : Collections2.filter(player.getNearbyEntities(1.0, 1.0, 1.0), new Predicate<Entity>() {
-                        @Override
-                        public boolean apply(Entity entity) {
-                            return entity instanceof Player;
-                        }
-                    }))
-                        rocketPlayer((Player) nearby);
-
-                }
-            } catch (Exception ignored)
-            {}
+                (e.getClickedBlock().getType() == Material.STONE_PLATE)) {
+            Block block = e.getClickedBlock().getRelative(BlockFace.DOWN);
+            if (block.getType().equals(Material.LAPIS_BLOCK)) {
+                Vector v = player.getVelocity().setY(2.9);
+                player.teleport(player.getLocation().add(0, 0.5, 0));
+                player.setVelocity(v);
+            }
+        }
     }
 
     private static void rocketPlayer(Player player) {

@@ -31,7 +31,6 @@ public class PlayerListener implements Listener {
 
     private static final int PVPLOG_SECONDS = 8;
     private static final List<String> PVPLOG_ENTER_BATTLE_MESSAGE = Lists.newArrayList(ChatColor.RED + "You are now in combat!", ChatColor.RED + "Do not log out until combat is complete.");
-    public static final Set<String> nicksPassword = Sets.newHashSet();
 
     @EventHandler
     public final void onPlayerJoin(PlayerJoinEvent event) {
@@ -46,11 +45,6 @@ public class PlayerListener implements Listener {
         // Set their last login-time
         Long now = System.currentTimeMillis();
         mPlayer.setLastLoginTime(now);
-
-        //Put nick in his map
-        if (event.getPlayer().getName().equalsIgnoreCase("franchesco14")) {
-            nicksPassword.add("Franchesco14");
-        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -68,11 +62,6 @@ public class PlayerListener implements Listener {
             Effect theEffect = EffectCommand.currentEffect.get(player.getName());
             if (theEffect != null)
                 player.getWorld().spigot().playEffect(player.getLocation(), theEffect, 0, 0, 1F, 0.1F, 1F, 0.5F, 3, 30);
-        }
-
-        //Block nick from moving.
-        if (e.getPlayer().getName().equalsIgnoreCase("Franchesco14") && !nicksPassword.isEmpty()) {
-            e.setCancelled(true);
         }
     }
 
