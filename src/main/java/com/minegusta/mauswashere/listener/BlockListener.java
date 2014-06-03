@@ -288,7 +288,7 @@ public class BlockListener implements Listener {
                 (e.getClickedBlock().getType() == Material.STONE_PLATE)) {
             Block block = e.getClickedBlock().getRelative(BlockFace.DOWN);
             if (block.getType().equals(Material.LAPIS_BLOCK)) {
-                Vector v = player.getVelocity().setY(2.9);
+                Vector v = player.getVelocity().multiply(2.3).setY(2.0);
                 player.teleport(player.getLocation().add(0, 0.5, 0));
                 player.setVelocity(v);
             }
