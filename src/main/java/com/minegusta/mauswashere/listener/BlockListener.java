@@ -288,20 +288,14 @@ public class BlockListener implements Listener {
                 (e.getClickedBlock().getType() == Material.STONE_PLATE)) {
             Block block = e.getClickedBlock().getRelative(BlockFace.DOWN);
             if (block.getType().equals(Material.LAPIS_BLOCK)) {
-                Vector v = player.getVelocity().multiply(2.3).setY(2.0);
+                player.getWorld().playSound(player.getLocation(),
+                        Sound.GHAST_FIREBALL, 1.0F, 1.0F);
+                Vector v = player.getVelocity().multiply(4.0).setY(1.8);
                 player.teleport(player.getLocation().add(0, 0.5, 0));
                 player.setVelocity(v);
+                noFallDamage.add(player.getName());
             }
         }
-    }
-
-    private static void rocketPlayer(Player player) {
-        player.getWorld().playSound(player.getLocation(),
-                Sound.GHAST_FIREBALL, 1.0F, 1.0F);
-        Vector direction = player.getLocation().getDirection();
-        player.setVelocity(direction.setY(1).multiply(1.8));
-        player.setVelocity(direction.multiply(2));
-        noFallDamage.add(player.getName());
     }
 
     @EventHandler
