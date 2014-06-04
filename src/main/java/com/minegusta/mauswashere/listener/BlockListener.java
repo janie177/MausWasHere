@@ -108,6 +108,9 @@ public class BlockListener implements Listener {
                         case SILVERFISH:
                             mobType = ChatColor.GRAY + "SilverFish";
                             break;
+                        default:
+                            mobType = ChatColor.LIGHT_PURPLE + "Pig";
+                            break;
                     }
 
 
