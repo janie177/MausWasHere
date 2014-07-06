@@ -296,7 +296,7 @@ public class BlockListener implements Listener {
                 player.teleport(player.getLocation().add(0, 0.5, 0));
                 player.playEffect(player.getLocation(), Effect.SMOKE, 0);
                 Vector v = player.getLocation().getDirection();
-                v.multiply(2.3);
+                v.multiply(2.0);
                 player.setVelocity(v);
                 player.setVelocity(new Vector(player.getVelocity().getX(), 1.0D, player.getVelocity().getZ()));
                 noFallDamage.add(player.getName());
