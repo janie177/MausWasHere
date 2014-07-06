@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityPortalEnterEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
 
 import java.util.Map;
 
@@ -35,6 +37,17 @@ public class EntityListener implements Listener {
             entity.getWorld().spigot().playEffect(location, Effect.MAGIC_CRIT, 1, 1, 0.5F, 1F, 0.5F, 0.5F, 20, 5);
             entity.getWorld().spigot().playEffect(location, Effect.PARTICLE_SMOKE, 1, 1, 0.5F, 1F, 0.5F, 0.5F, 40, 5);
             event.setCancelled(true);
+        }
+    }
+
+    //Stop portal travel.
+    @EventHandler
+    public void onPortalTravel(EntityPortalEvent e)
+    {
+        if(!(e.getEntity() instanceof Player))
+        {
+            e.setCancelled(true);
+            e.getEntity().teleport(e.getEntity().getLocation().add(0,15,0));
         }
     }
 }
