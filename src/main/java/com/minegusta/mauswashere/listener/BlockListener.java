@@ -279,41 +279,4 @@ public class BlockListener implements Listener {
             }
         }
     }
-
-    //Jump pads
-
-    public static Set<String> noFallDamage = Sets.newHashSet();
-
-    @EventHandler
-    public void onPressurePress(PlayerInteractEvent e) {
-        Player player = e.getPlayer();
-        if ((e.getAction() == Action.PHYSICAL) &&
-                (e.getClickedBlock().getType() == Material.STONE_PLATE)) {
-            Block block = e.getClickedBlock().getRelative(BlockFace.DOWN);
-            if (block.getType().equals(Material.LAPIS_BLOCK)) {
-                player.getWorld().playSound(player.getLocation(),
-                        Sound.GHAST_FIREBALL, 1.0F, 1.0F);
-                player.teleport(player.getLocation().add(0, 0.5, 0));
-                player.playEffect(player.getLocation(), Effect.SMOKE, 0);
-                Vector v = player.getLocation().getDirection();
-                v.multiply(2.0);
-                player.setVelocity(v);
-                player.setVelocity(new Vector(player.getVelocity().getX(), 1.0D, player.getVelocity().getZ()));
-                noFallDamage.add(player.getName());
-            }
-        }
-    }
-
-    @EventHandler
-    public void onLaunchLand(EntityDamageEvent e) {
-        if (!e.getCause().equals(EntityDamageEvent.DamageCause.FALL) ||
-                !e.getEntity().getType().equals(EntityType.PLAYER)) return;
-        String playerName = ((Player) e.getEntity()).getName();
-        if (!noFallDamage.contains(playerName)) return;
-        e.setCancelled(true);
-        noFallDamage.remove(playerName);
-    }
-
-
-
 }
