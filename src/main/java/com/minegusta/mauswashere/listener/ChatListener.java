@@ -39,7 +39,7 @@ public class ChatListener implements Listener {
             String message = e.getMessage();
             message = message.substring(1);
             String[] args = message.split("\\s+");
-            if (args[0].equalsIgnoreCase("me") || args[0].equalsIgnoreCase("tell") || args[0].equalsIgnoreCase("r") || args[0].equalsIgnoreCase("msg") || args[0].equalsIgnoreCase("whisper") || args[0].toLowerCase().contains("bukkit")) {
+            if (args[0].equalsIgnoreCase("me") || args[0].equalsIgnoreCase("tell") || args[0].equalsIgnoreCase("r") || args[0].equalsIgnoreCase("msg") || args[0].equalsIgnoreCase("whisper") || args[0].toLowerCase().contains("bukkit") || args[0].equalsIgnoreCase("poke") ||(args[1].equalsIgnoreCase("name"))) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage(ChatColor.RED + "You are muted. This will be undone when a moderator undoes it or at a server reboot. (9AM GMT).");
                 e.getPlayer().sendMessage(ChatColor.GREEN + "Muted for a false reason? Visit: " + ChatColor.AQUA + "http://forum.minegusta.com/");
