@@ -61,7 +61,7 @@ public class BlockListener implements Listener {
                 event.setLine(3, RainBowStringMaker.rainbowify(text4.replace("&!", "")));
             }
         }
-        if (text2 != null && (text2.equalsIgnoreCase("[command]") || text2.equalsIgnoreCase("[cmd]")))
+        if (text2 != null && (text2.equalsIgnoreCase("[command]") ||  text2.equalsIgnoreCase("[cmd]")))
         {
             event.setLine(1, ChatColor.RED + "[Command]");
         }
@@ -69,6 +69,10 @@ public class BlockListener implements Listener {
         if(text2 != null && text2.equalsIgnoreCase("[kit]"))
         {
             event.setLine(1, ChatColor.GREEN + "[Kit]");
+        }
+        if(text2 != null && text2.equalsIgnoreCase("[Join]") && event.getPlayer().isOp())
+        {
+            event.setLine(1, ChatColor.GREEN + "[Join]");
         }
     }
 
