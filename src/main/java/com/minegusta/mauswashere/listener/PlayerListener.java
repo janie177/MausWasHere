@@ -94,8 +94,8 @@ public class PlayerListener implements Listener {
                 if (sign.getLine(1).equalsIgnoreCase(ChatColor.GREEN + "[Join]") && sign.getLine(2) != null) {
                     player.chat("/pa join " + ChatColor.stripColor(sign.getLine(2)));
                 }
-                if (sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Leave]") && sign.getLine(2) != null) {
-                    player.chat("/pa leave " + ChatColor.stripColor(sign.getLine(2)));
+                if (sign.getLine(1).equalsIgnoreCase(ChatColor.RED + "[Leave]")) {
+                    player.chat("/pa leave");
                 }
             }
         }
