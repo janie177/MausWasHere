@@ -6,7 +6,7 @@
 
     <groupId>com.minegusta</groupId>
     <artifactId>MausWasHere</artifactId>
-    <version>1.6.8</version>
+    <version>1.6.9</version>
     <packaging>jar</packaging>
 
     <name>MausWasHere</name>

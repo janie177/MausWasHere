@@ -74,6 +74,10 @@ public class BlockListener implements Listener {
         {
             event.setLine(1, ChatColor.GREEN + "[Join]");
         }
+        if(text2 != null && text2.equalsIgnoreCase("[Leave]") && event.getPlayer().isOp())
+        {
+            event.setLine(1, ChatColor.RED + "[Leave]");
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
